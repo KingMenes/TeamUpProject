@@ -1,0 +1,22 @@
+body {
+    padding-top: 20px;
+}
+
+ul {
+    background-color: antiquewhite;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0px;
+    /* height: 20px; */
+}
+
+
+
+/* .logo {
+    justify-self: flex-start;
+} */
