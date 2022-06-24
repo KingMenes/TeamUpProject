@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import './LoginForm.css'
 
 function LoginFormPage() {
@@ -29,6 +29,7 @@ function LoginFormPage() {
 
     return (
         <form className='LoginForm' onSubmit={handleSubmit}>
+            <h2>Log in</h2>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
@@ -57,6 +58,7 @@ function LoginFormPage() {
                 e.preventDefault()
                 dispatch(sessionActions.setUser({ username: 'Demo-lition' }))
             }} className='demo'>Demo</button>
+            <NavLink to='/signup'>Don't have an account? Click here</NavLink>
         </form>
     );
 }
