@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
   Event.associate = function (models) {
     // associations can be defined here
     Event.belongsTo(models.User, { foreignKey: 'userId' })
-    const columnMapping = { through: 'RSVP', otherKey: 'userId', foreignKey: eventId }
-    User.belongsToMany(models.User, columnMapping)
+    const columnMapping = { through: 'RSVP', otherKey: 'userId', foreignKey: 'eventId' }
+    Event.belongsToMany(models.User, columnMapping)
   };
   return Event;
 };
