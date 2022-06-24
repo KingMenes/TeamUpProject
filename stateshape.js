@@ -3,7 +3,6 @@ store = {
     events: {
         eventId: {
             eventData,
-            // groupId: "groupType string", //this is categoryId in the db schema image
             host,
             description,
         },
