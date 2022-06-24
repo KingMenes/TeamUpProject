@@ -13,53 +13,57 @@ export default function () {
 
     const history = useHistory()
     const username = useSelector(state => state.session.user)
-    console.log(username)
-    let payload;
-    useEffect(() => {
-        const err = []
-        if (title.length <= 5) err.push('Title must be longer than 5 characters')
-        if (title.length >= 50) err.push('Title must be under 50 characters')
-        if (description.length <= 15) err.push('Description must be longer than 15 characters')
-        setErrors(err)
+
+    if (!username) history.push('/login')
+    else {
+
+        let payload;
+        useEffect(() => {
+            const err = []
+            if (title.length <= 5) err.push('Title must be longer than 5 characters')
+            if (title.length >= 50) err.push('Title must be under 50 characters')
+            if (description.length <= 15) err.push('Description must be longer than 15 characters')
+            setErrors(err)
 
 
-    }, [title, description])
+        }, [title, description])
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-        payload = {
-            username,
-            title,
-            description
+        const onSubmit = (e) => {
+            e.preventDefault()
+            payload = {
+                username,
+                title,
+                description
+            }
+            dispatch(postEventsThunk(payload))
+            history.push('/')
         }
-        dispatch(postEventsThunk(payload))
-        history.push('/')
+
+        return (
+            <>
+                <button onClick={() => { history.goBack() }}>Back</button>
+                {errors && <ul>
+                    {errors.map(error => {
+                        return (
+                            <li key={error} className='errors'>{error}</li>
+                        )
+                    })}
+                </ul>}
+                <form onSubmit={onSubmit}>
+                    <label>
+                        Title
+                        <input onChange={(e) => setTitle(e.target.value)} type='text' name='title' value={title}>
+                        </input>
+                    </label>
+                    <label>
+                        Description
+                        <textarea onChange={(e) => { setDescription(e.target.value) }} type='text' name='description' value={description}>
+                        </textarea>
+                    </label>
+                    <button disabled={errors.length ? true : false}>Submit</button>
+                </form>
+
+            </>
+        )
     }
-
-    return (
-        <>
-            <button onClick={() => { history.goBack() }}>Back</button>
-            {errors && <ul>
-                {errors.map(error => {
-                    return (
-                        <li key={error} className='errors'>{error}</li>
-                    )
-                })}
-            </ul>}
-            <form onSubmit={onSubmit}>
-                <label>
-                    Title
-                    <input onChange={(e) => setTitle(e.target.value)} type='text' name='title' value={title}>
-                    </input>
-                </label>
-                <label>
-                    Description
-                    <textarea onChange={(e) => { setDescription(e.target.value) }} type='text' name='description' value={description}>
-                    </textarea>
-                </label>
-                <button disabled={errors.length ? true : false}>Submit</button>
-            </form>
-
-        </>
-    )
 }
