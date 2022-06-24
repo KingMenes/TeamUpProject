@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
-// import * as sessionActions from "../store/session";
+import { NavLink } from "react-router-dom";
 import { getEventsThunk } from "../store/events"
 import './home.css'
 
 export default function HomePage() {
-    // console.log(eventActions.getEventsThunk)
     const dispatch = useDispatch()
 
     const events = useSelector(state => {
@@ -21,17 +19,17 @@ export default function HomePage() {
     }, [dispatch, evnts])
     return (
         <>
-            <button className='createbutton'>Create request</button>
+            <NavLink className='createform' to='/events/new'>Create Request</NavLink>
             <ul>
                 {evnts && array.map(event => {
                     return (
 
-                        <li className="EachEvent">
+                        <li key={event.id} className="EachEvent">
                             <h4>
-                                {/* {event.title} */}
                                 {event.User.username} at {event.date}
                             </h4>
                             <div className="eventtitle">{event.title}</div>
+                            <NavLink to={`/events/${event.userId}`}>Click here to see more details on "{event.title}"</NavLink>
                         </li>
 
                     )

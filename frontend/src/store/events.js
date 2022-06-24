@@ -4,6 +4,12 @@ const getEvents = '/getEvents'
 const postEvent = '/postEvent'
 const updateEvent = '/updateEvent'
 const deleteEvent = '/deleteEvent'
+const getOneEvent = '/justGetOneEvent'
+
+const justGetOneEvent = (id) => ({
+    type: getOneEvent,
+    id
+})
 
 const getEventAction = (list) => ({
     type: getEvents,
@@ -37,6 +43,23 @@ export const getEventsThunk = () => async (dispatch) => {
     }
 }
 
+export const postEventsThunk = (payload) => async (dispatch) => {
+    const { username, title, description } = payload
+
+    const res = await csrfFetch('/api/events', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, title, description })
+    })
+    if (res.ok) {
+        const event = await res.json()
+        dispatch(postEventAction(event))
+        // console.log(event)
+        return event
+    }
+}
+
+
 
 const eventsReducer = (state = {}, action) => {
     let events;
@@ -47,6 +70,10 @@ const eventsReducer = (state = {}, action) => {
                 events[event.id] = event
             })
             return events
+        case postEventAction:
+            events = { ...state, [action.event.id]: action.event }
+            return events
+
         default:
             return state
 

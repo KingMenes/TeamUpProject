@@ -14,7 +14,15 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', asyncHandler(async (req, res) => {
-
+    const { username, title, description } = req.body
+    const user = (username.username)
+    console.log(user)
+    const userId = await db.User.findOne({ where: { username: user } })
+    const id = userId.id
+    console.log(id)
+    // console.log(req.body)
+    const event = await db.Event.create({ userId: id, title, description, date: new Date() })
+    return res.json(event)
 }))
 
 router.put('/:eventId', asyncHandler(async (req, res) => {

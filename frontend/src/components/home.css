@@ -34,3 +34,13 @@ ul {
 #root {
     margin: 0px;
 }
+
+.createform {
+    border: solid black 1px;
+    color: black;
+    margin: 5px;
+    background-color: gainsboro;
+    position: relative;
+    top: 20px;
+    left: 20px
+}

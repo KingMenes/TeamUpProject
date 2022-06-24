@@ -6,6 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from './components/Home'
+import EachEvent from "./components/Events/EachEvent";
+import CreateForm from "./components/CreateEventForm/CreateForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +24,9 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
-
+          <Route exact path="/events/new">
+            <CreateForm />
+          </Route>
 
           <Route path="/login">
             <LoginFormPage />
@@ -30,7 +34,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-
+          <Route path="/events/:eventId">
+            <EachEvent />
+          </Route>
 
 
 
