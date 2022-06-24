@@ -6,32 +6,37 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <li className='lol'>
+                <ProfileButton user={sessionUser} />
+            </li>
         );
     } else {
         sessionLinks = (
-            <>
-                <NavLink to="/login">Log In</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
-            </>
+            <div className='sessionlinks'>
+                <li className='lisession'>
+                    <NavLink to="/login">Log In</NavLink>
+                </li>
+                <li>
+                    <NavLink className='lisession' to="/signup">Sign Up</NavLink>
+                </li>
+            </div>
         );
     }
 
-    return (
-        <ul>
-            <li className='nav'>
-                <NavLink exact to="/">Home</NavLink>
-            </li>
-            <li className='logo'>Word</li>
-            <li className='nav'>
-                {isLoaded && sessionLinks}
-            </li>
 
-        </ul>
+    return (
+        <div className='uldiv'>
+            <ul className='navul'>
+                <li className='nav'>
+                    <NavLink exact to="/">Home</NavLink>
+                </li>
+                <img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img>
+                {isLoaded && sessionLinks}
+            </ul>
+        </div>
     );
 }
 
