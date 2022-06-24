@@ -15,6 +15,8 @@ function LoginFormPage() {
         <Redirect to="/" />
     );
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -33,6 +35,7 @@ function LoginFormPage() {
             <label className='label'>
                 Username or Email
                 <input
+                    id='usernameid'
                     type="text"
                     value={credential}
                     onChange={(e) => setCredential(e.target.value)}
@@ -42,6 +45,7 @@ function LoginFormPage() {
             <label className='label'>
                 Password
                 <input
+                    id='passwordid'
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -49,6 +53,10 @@ function LoginFormPage() {
                 />
             </label>
             <button type="submit">Log In</button>
+            <button onClick={(e) => {
+                e.preventDefault()
+                dispatch(sessionActions.setUser({ username: 'Demo-lition' }))
+            }} className='demo'>Demo</button>
         </form>
     );
 }
