@@ -66,11 +66,19 @@ export const deleteEventsThunk = (id) => async (dispatch) => {
 }
 
 export const updateEventsThunk = (data) => async (dispatch) => {
+    const { title, description } = data
+    console.log(data)
+    console.log(title)
+    console.log(description)
     const res = await csrfFetch(`/api/events/${data.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: data
+        body: JSON.stringify({ id: data.id, title, description })
     })
+    if (res.ok) {
+        const result = res.json()
+        dispatch(updateEventAction(result))
+    }
 }
 
 
@@ -91,9 +99,7 @@ const eventsReducer = (state = {}, action) => {
             delete events[action.event.id]
             return events
         case updateEvent:
-            events = { ...state }
-            events[action.data.id] = action.data
-            return events
+            return { ...state, [action.info.id]: action.info }
 
         default:
             return state

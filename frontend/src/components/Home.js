@@ -15,7 +15,7 @@ export default function HomePage() {
     const events = useSelector(state => {
         return state.events
     })
-    console.log(events)
+
     const [evnts, setEvnts] = useState('')
     const array = Object.values(events)
     if (!evnts) {
@@ -24,7 +24,6 @@ export default function HomePage() {
 
     useEffect(() => {
         setEvnts(events)
-        // updateStatus(!status)
 
     }, [dispatch, evnts, status])
 
