@@ -15,17 +15,13 @@ export default function HomePage() {
     const events = useSelector(state => {
         return state.events
     })
-
-    const [evnts, setEvnts] = useState('')
     const array = Object.values(events)
-    if (!evnts) {
-        dispatch(getEventsThunk())
-    }
+
 
     useEffect(() => {
-        setEvnts(events)
 
-    }, [dispatch, evnts, status])
+        dispatch(getEventsThunk())
+    }, [dispatch])
 
 
 
@@ -34,7 +30,7 @@ export default function HomePage() {
         <>
             <NavLink className='createform' to='/events/new'>Create Request</NavLink>
             <ul>
-                {evnts && array.map(event => {
+                {events && array.map(event => {
                     return (
                         <li key={event.id} className="EachEvent">
                             {user === event.userId && <button onClick={async (e) => {

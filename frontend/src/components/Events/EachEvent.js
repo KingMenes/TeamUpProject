@@ -19,10 +19,13 @@ export default function () {
     const events = useSelector(state => {
         return state.events
     })
-
     const event = events[eventId]
+
+
     const [title, setTitle] = useState(event.title)
     const [description, setDescription] = useState(event.description)
+
+
     const [hidden, setHidden] = useState('hidden')
     const [errors, setErrors] = useState([])
 
@@ -86,7 +89,6 @@ export default function () {
                 <button>Submit Changes</button>
             </form>
             <h1>{event && event.title}</h1>
-            <h2>{event && event.User.username}</h2>
             <p>{event && event.description}</p>
         </>
     )
