@@ -76,8 +76,10 @@ export const updateEventsThunk = (data) => async (dispatch) => {
         body: JSON.stringify({ id: data.id, title, description })
     })
     if (res.ok) {
-        const result = res.json()
+        const result = await res.json()
+        console.log(result)
         dispatch(updateEventAction(result))
+        return result
     }
 }
 

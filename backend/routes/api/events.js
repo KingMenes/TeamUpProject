@@ -27,11 +27,12 @@ router.post('/', asyncHandler(async (req, res) => {
 
 router.put('/:eventId', asyncHandler(async (req, res) => {
     const eventId = req.body.id
-    const event = await db.Event.findByPk(eventId)
+    const event = await db.Event.findByPk(eventId, { include: db.User })
     event.title = req.body.title
     event.description = req.body.description
     await event.save()
-    return res.json(event)
+    console.log(event.dataValues)
+    return res.json(event.dataValues)
 }))
 
 router.delete('/:eventId', asyncHandler(async (req, res) => {
