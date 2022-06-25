@@ -34,6 +34,7 @@ function UpdateForm({ event }) {
             description
         }
         dispatch(updateEventsThunk(payload))
+        setHidden('hidden')
     }
 
     return (

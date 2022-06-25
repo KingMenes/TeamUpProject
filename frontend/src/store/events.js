@@ -12,9 +12,9 @@ const getEventAction = (list) => ({
     list
 })
 
-const postEventAction = (data) => ({
+const postEventAction = (event) => ({
     type: postEvent,
-    info: data
+    event
 })
 
 const updateEventAction = (data) => ({

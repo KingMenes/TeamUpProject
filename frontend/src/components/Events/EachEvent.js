@@ -37,7 +37,6 @@ export default function () {
     return (
         <>
             <button onClick={() => { history.goBack() }}>Back</button>
-            <button onClick={() => { setEvend(event) }}>reRender(fix Later)</button>
             {
                 user === event.userId && <button onClick={(e) => {
                     dispatch(deleteEventsThunk(event.id))
