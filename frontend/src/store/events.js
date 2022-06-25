@@ -6,10 +6,6 @@ const updateEvent = '/updateEvent'
 const deleteEvent = '/deleteEvent'
 const getOneEvent = '/justGetOneEvent'
 
-const justGetOneEvent = (id) => ({
-    type: getOneEvent,
-    id
-})
 
 const getEventAction = (list) => ({
     type: getEvents,
@@ -26,9 +22,9 @@ const updateEventAction = (data) => ({
     info: data
 })
 
-const deleteEventAction = (eventId) => ({
+const deleteEventAction = (event) => ({
     type: deleteEvent,
-    info: eventId
+    event
 })
 
 export const getEventsThunk = () => async (dispatch) => {
@@ -37,7 +33,6 @@ export const getEventsThunk = () => async (dispatch) => {
     })
     if (res.ok) {
         const events = await res.json()
-        // console.log(events)
         dispatch(getEventAction(events))
         return events
     }
@@ -54,11 +49,29 @@ export const postEventsThunk = (payload) => async (dispatch) => {
     if (res.ok) {
         const event = await res.json()
         dispatch(postEventAction(event))
-        // console.log(event)
         return event
     }
 }
 
+export const deleteEventsThunk = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/events/${id}`, {
+        method: 'DELETE'
+    })
+    if (res.ok) {
+        const result = await res.json()
+        console.log(result)
+        dispatch(deleteEventAction(result))
+        return result
+    }
+}
+
+export const updateEventsThunk = (data) => async (dispatch) => {
+    const res = await csrfFetch(`/api/events/${data.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: data
+    })
+}
 
 
 const eventsReducer = (state = {}, action) => {
@@ -70,8 +83,16 @@ const eventsReducer = (state = {}, action) => {
                 events[event.id] = event
             })
             return events
-        case postEventAction:
+        case postEvent:
             events = { ...state, [action.event.id]: action.event }
+            return events
+        case deleteEvent:
+            events = { ...state }
+            delete events[action.event.id]
+            return events
+        case updateEvent:
+            events = { ...state }
+            events[action.data.id] = action.data
             return events
 
         default:

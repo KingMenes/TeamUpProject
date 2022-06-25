@@ -56,7 +56,7 @@ function LoginFormPage() {
             <button type="submit">Log In</button>
             <button onClick={(e) => {
                 e.preventDefault()
-                dispatch(sessionActions.setUser({ username: 'Demo-lition' }))
+                dispatch(sessionActions.setUser({ id: 1, username: 'Demo-lition' }))
             }} className='demo'>Demo</button>
             <NavLink to='/signup'>Don't have an account? Click here</NavLink>
         </form>

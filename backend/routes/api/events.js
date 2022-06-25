@@ -26,11 +26,16 @@ router.post('/', asyncHandler(async (req, res) => {
 }))
 
 router.put('/:eventId', asyncHandler(async (req, res) => {
-
+    console.log(req.body)
 }))
 
 router.delete('/:eventId', asyncHandler(async (req, res) => {
+    const { eventId } = req.params
 
+    const event = await db.Event.findByPk(parseInt(eventId))
+    console.log(event)
+    event.destroy()
+    return res.json(event)
 }))
 
 module.exports = router
