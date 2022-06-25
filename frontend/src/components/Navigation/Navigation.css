@@ -54,6 +54,17 @@ body {
     background-color: bisque;
 }
 
+
+.demoli {
+    display: flex;
+}
+
+
+.demobutton {
+    justify-self: center;
+    align-self: center;
+}
+
 .profile-dropdown {
     list-style-type: none;
     display: flex;
@@ -62,9 +73,8 @@ body {
     top: 33px;
     right: 0px;
     border: solid 1px;
+    height: fit-content;
+    width: fit-content;
+    margin: 1px;
 
 }
-
-/* .logo {
-    justify-self: flex-start;
-} */

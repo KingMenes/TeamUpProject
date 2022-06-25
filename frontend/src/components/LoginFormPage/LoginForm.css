@@ -33,3 +33,7 @@ input {
     width: fit-content;
     align-self: center;
 }
+
+.LoginForm {
+    height: 420px;
+}
