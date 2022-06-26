@@ -1,70 +1,69 @@
 import { csrfFetch } from './csrf';
 
-const getEvents = '/getEvents'
-const postEvent = '/postEvent'
-const updateEvent = '/updateEvent'
-const deleteEvent = '/deleteEvent'
-const getOneEvent = '/justGetOneEvent'
+const getReq = '/getReq'
+const postReq = '/postReq'
+const updateReq = '/updateEvent'
+const deleteReq = '/deleteEvent'
 
 
-const getEventAction = (list) => ({
-    type: getEvents,
+const getReqAction = (list) => ({
+    type: getReq,
     list
 })
 
-const postEventAction = (event) => ({
-    type: postEvent,
+const postReqAction = (event) => ({
+    type: postReq,
     event
 })
 
-const updateEventAction = (data) => ({
-    type: updateEvent,
+const updateReqsAction = (data) => ({
+    type: updateReq,
     info: data
 })
 
-const deleteEventAction = (event) => ({
-    type: deleteEvent,
+const deleteReqAction = (event) => ({
+    type: deleteReq,
     event
 })
 
-export const getEventsThunk = () => async (dispatch) => {
+export const getReqsThunk = () => async (dispatch) => {
     const res = await fetch('/api/events', {
         method: 'GET'
     })
     if (res.ok) {
         const events = await res.json()
-        dispatch(getEventAction(events))
+        dispatch(getReqAction(events))
         return events
     }
 }
 
-export const postEventsThunk = (payload) => async (dispatch) => {
-    const { username, title, description } = payload
-
-    const res = await csrfFetch('/api/events', {
+export const postReqsThunk = (payload) => async (dispatch) => {
+    const { userId, eventId } = payload
+    console.log(userId, eventId)
+    const res = await csrfFetch('/api/requests', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, title, description })
+        body: JSON.stringify({ userId, eventId })
     })
     if (res.ok) {
         const event = await res.json()
-        dispatch(postEventAction(event))
+        dispatch(postReqAction(event))
         return event
     }
 }
 
-export const deleteEventsThunk = (id) => async (dispatch) => {
+export const deleteReqsThunk = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/events/${id}`, {
         method: 'DELETE'
     })
     if (res.ok) {
         const result = await res.json()
-        dispatch(deleteEventAction(result))
+        dispatch(deleteReqAction(result))
         return result
     }
 }
 
-export const updateEventsThunk = (data) => async (dispatch) => {
+export const updateReqsThunk = (data) => async (dispatch) => {
     const { title, description } = data
 
     const res = await csrfFetch(`/api/events/${data.id}`, {
@@ -75,29 +74,29 @@ export const updateEventsThunk = (data) => async (dispatch) => {
     if (res.ok) {
         const result = await res.json()
         console.log(result)
-        dispatch(updateEventAction(result))
+        dispatch(updateReqsAction(result))
         return result
     }
 }
 
 
-const eventsReducer = (state = {}, action) => {
+const requestsReducer = (state = {}, action) => {
     let events;
     switch (action.type) {
-        case getEvents:
+        case getReq:
             events = { ...state }
             action.list.forEach(event => {
                 events[event.id] = event
             })
             return events
-        case postEvent:
+        case postReq:
             events = { ...state, [action.event.id]: action.event }
             return events
-        case deleteEvent:
+        case deleteReq:
             events = { ...state }
             delete events[action.event.id]
             return events
-        case updateEvent:
+        case updateReq:
             return { ...state, [action.info.id]: action.info }
 
         default:
@@ -105,4 +104,4 @@ const eventsReducer = (state = {}, action) => {
     }
 }
 
-export default eventsReducer
+export default requestsReducer

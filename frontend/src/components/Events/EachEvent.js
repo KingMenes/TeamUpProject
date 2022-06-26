@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { getEventsThunk, deleteEventsThunk, updateEventsThunk } from "../../store/events";
 import './eachevent.css'
 import UpdateForm from "./updateform";
+import { postReqsThunk } from "../../store/requests";
 
 export default function () {
     const dispatch = useDispatch()
@@ -36,6 +37,16 @@ export default function () {
                         history.push('/')
                     }}>Delete</button>
                 }
+                {user && user !== event.userId && <button onClick={async () => {
+                    const request = await fetch(`/api/requests/${event.id}/${user}`)
+                    if (request.ok) {
+                        const found = await request.json()
+                        if (!found) {
+                            await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
+                            window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
+                        } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
+                    }
+                }}>Team up request</button>}
 
                 <UpdateForm event={event} />
                 <h1>{event && event.title}</h1>
