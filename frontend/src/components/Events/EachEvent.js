@@ -16,37 +16,31 @@ export default function () {
     const { eventId } = useParams()
     const [evend, setEvend] = useState('')
 
-
     const events = useSelector(state => {
         return state.events
     })
     const event = events[eventId]
-
-
-
 
     useEffect(() => {
         dispatch(getEventsThunk())
         setEvend(event)
     }, [dispatch, evend])
 
+    if (event) {
+        return (
+            <>
+                <button onClick={() => { history.goBack() }}>Back</button>
+                {
+                    user === event.userId && <button onClick={(e) => {
+                        dispatch(deleteEventsThunk(event.id))
+                        history.push('/')
+                    }}>Delete</button>
+                }
 
-
-
-
-    return (
-        <>
-            <button onClick={() => { history.goBack() }}>Back</button>
-            {
-                user === event.userId && <button onClick={(e) => {
-                    dispatch(deleteEventsThunk(event.id))
-                    history.push('/')
-                }}>Delete</button>
-            }
-
-            <UpdateForm event={event} />
-            <h1>{event && event.title}</h1>
-            <p>{event && event.description}</p>
-        </>
-    )
+                <UpdateForm event={event} />
+                <h1>{event && event.title}</h1>
+                <p>{event && event.description}</p>
+            </>
+        )
+    }
 }
