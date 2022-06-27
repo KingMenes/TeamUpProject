@@ -1,0 +1,37 @@
+.teamrequestsdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ulteamreq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    font-size: 24px;
+    box-shadow: 0px 0px 5px black;
+
+}
+
+.delbutt {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.lireq {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 60px;
+    border: solid 1px black;
+    margin: 15px;
+}
+
+.lireq:hover {
+    box-shadow: 0px 0px 5px darkgrey
+}

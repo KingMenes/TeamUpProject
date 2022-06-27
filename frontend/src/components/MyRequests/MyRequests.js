@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
 import { getAllReqsThunk, deleteReqsThunk } from "../../store/requests";
+import './myrequests.css'
 
 export default function () {
     const dispatch = useDispatch()
@@ -21,13 +22,13 @@ export default function () {
 
     if (pending) {
         return (
-            <>
+            <div className='teamrequestsdiv'>
                 <h1>My TeamUp Requests</h1>
-                <ul>
+                <ul className="ulteamreq">
                     {pending.map(req => {
-                        return (<li key={req.id}>
+                        return (<li className='lireq' key={req.id}>
                             <NavLink to={`/events/${req.id}`}>{req.title}</NavLink>
-                            <button onClick={async (e) => {
+                            <button className='delbutt' onClick={async (e) => {
                                 await dispatch(deleteReqsThunk(req.id, user))
                                 setStatus(!status)
                             }}>Delete</button>
@@ -35,7 +36,7 @@ export default function () {
                         )
                     })}
                 </ul>
-            </>
+            </div>
         )
     } else return null
 }
