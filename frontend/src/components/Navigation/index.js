@@ -10,6 +10,7 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
+                <NavLink to='/myevents'>My Events</NavLink>
                 <NavLink to='/myrequests'>My Requests</NavLink>
                 <li className='lol'>
                     <ProfileButton user={sessionUser} />

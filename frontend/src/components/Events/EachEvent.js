@@ -22,7 +22,7 @@ export default function () {
     })
     const event = events[eventId]
 
-
+    console.log(event)
 
     useEffect(() => {
         dispatch(getAllReqsThunk(user))
@@ -44,10 +44,12 @@ export default function () {
                     const request = await dispatch(getReqsThunk(eventId, user))
                     if (!request) {
                         await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
+                        console.log(event.User)
                         window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
                     } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
 
-                }}>Team up request</button>}
+                }
+                }>Team up request</button>}
 
                 <UpdateForm event={event} />
                 <h1>{event && event.title}</h1>

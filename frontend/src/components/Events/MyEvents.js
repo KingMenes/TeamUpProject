@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getEventsThunk, deleteEventsThunk, updateEventsThunk } from "../store/events"
-import './home.css'
+import { getEventsThunk, deleteEventsThunk } from "../../store/events"
 
-export default function HomePage() {
+export default function MyEvents() {
     const dispatch = useDispatch()
     const [status, updateStatus] = useState(true);
 
@@ -15,7 +14,9 @@ export default function HomePage() {
     const events = useSelector(state => {
         return state.events
     })
-    const array = events.list
+    const array = events.list.filter(ele => {
+        return ele.userId === user
+    })
 
     useEffect(() => {
 

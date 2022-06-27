@@ -9,6 +9,7 @@ import HomePage from './components/Home'
 import EachEvent from "./components/Events/EachEvent";
 import CreateForm from "./components/CreateEventForm/CreateForm";
 import MyRequests from "./components/MyRequests/MyRequests";
+import MyEvents from "./components/Events/MyEvents";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path='/myrequests'>
             <MyRequests />
+          </Route>
+          <Route path='/myevents'>
+            <MyEvents />
           </Route>
 
 

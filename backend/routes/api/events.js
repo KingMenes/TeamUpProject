@@ -8,7 +8,7 @@ const router = express.Router();
 const db = require('../../db/models')
 
 router.get('/', async (req, res) => {
-    const list = await db.Event.findAll({ order: [['date', 'ASC']], include: db.Use })
+    const list = await db.Event.findAll({ order: [['date', 'ASC']], include: db.User })
     res.json(list)
 })
 
