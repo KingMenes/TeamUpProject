@@ -13,8 +13,11 @@ body {
     margin-top: 10px;
 }
 
-li {
+.EachEvent {
     list-style: none;
+    padding: 4px;
+    background-color: ghostwhite;
+    border-radius: 12px;
 }
 
 .createbutton {
@@ -22,6 +25,8 @@ li {
     position: relative;
     left: 20px;
     top: 10px;
+    border-radius: 2px;
+
 }
 
 ul {
@@ -42,5 +47,13 @@ ul {
     background-color: gainsboro;
     position: relative;
     top: 20px;
-    left: 20px
+    left: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 3px;
+    text-decoration: none;
+}
+
+.createform:hover {
+    box-shadow: 0px 0px 3px black;
 }
