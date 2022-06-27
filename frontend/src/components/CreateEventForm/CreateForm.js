@@ -40,30 +40,31 @@ export default function () {
         }
 
         return (
-            <>
+            <div className="createcontain">
                 <button onClick={() => { history.goBack() }}>Back</button>
-                {errors && <ul>
+                <h1>Create a Team Up event</h1>
+                {errors && <ul className="ulcreateform">
                     {errors.map(error => {
                         return (
                             <li key={error} className='errors'>{error}</li>
                         )
                     })}
                 </ul>}
-                <form onSubmit={onSubmit}>
-                    <label>
+                <form className='formcreate' onSubmit={onSubmit}>
+                    <label className='labelforforms'>
                         Title
-                        <input onChange={(e) => setTitle(e.target.value)} type='text' name='title' value={title}>
+                        <input className='inputstuff' onChange={(e) => setTitle(e.target.value)} type='text' name='title' value={title}>
                         </input>
                     </label>
-                    <label>
+                    <label className="labelforforms">
                         Description
-                        <textarea onChange={(e) => { setDescription(e.target.value) }} type='text' name='description' value={description}>
+                        <textarea className='inputstuff' onChange={(e) => { setDescription(e.target.value) }} type='text' name='description' value={description}>
                         </textarea>
                     </label>
                     <button disabled={errors.length ? true : false}>Submit</button>
                 </form>
 
-            </>
+            </div>
         )
     }
 }
