@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getEventsThunk, deleteEventsThunk, updateEventsThunk } from "../../store/events";
+import { getEventsThunk, deleteEventsThunk } from "../../store/events";
 import './eachevent.css'
 import UpdateForm from "./updateform";
-import { postReqsThunk } from "../../store/requests";
+import { postReqsThunk, getReqsThunk, getAllReqsThunk } from "../../store/requests";
 
 export default function () {
     const dispatch = useDispatch()
     const history = useHistory()
-
+    const pending = useSelector(state => { return state })
     const userr = useSelector(state => { return state.session.user })
     let user;
     if (userr) user = userr.id
@@ -22,7 +22,10 @@ export default function () {
     })
     const event = events[eventId]
 
+
+
     useEffect(() => {
+        dispatch(getAllReqsThunk(user))
         dispatch(getEventsThunk())
         setEvend(event)
     }, [dispatch, evend])
@@ -38,14 +41,12 @@ export default function () {
                     }}>Delete</button>
                 }
                 {user && user !== event.userId && <button onClick={async () => {
-                    const request = await fetch(`/api/requests/${event.id}/${user}`)
-                    if (request.ok) {
-                        const found = await request.json()
-                        if (!found) {
-                            await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
-                            window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
-                        } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
-                    }
+                    const request = await dispatch(getReqsThunk(eventId, user))
+                    if (!request) {
+                        await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
+                        window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
+                    } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
+
                 }}>Team up request</button>}
 
                 <UpdateForm event={event} />

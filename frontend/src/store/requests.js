@@ -2,9 +2,14 @@ import { csrfFetch } from './csrf';
 
 const getReq = '/getReq'
 const postReq = '/postReq'
-const updateReq = '/updateEvent'
-const deleteReq = '/deleteEvent'
+const updateReq = '/updateReq'
+const deleteReq = '/deleteReq'
+const getOneReq = '/justGetOneReq'
 
+const getOneReqAction = (req) => ({
+    type: getOneReq,
+    req
+})
 
 const getReqAction = (list) => ({
     type: getReq,
@@ -26,20 +31,27 @@ const deleteReqAction = (event) => ({
     event
 })
 
-export const getReqsThunk = () => async (dispatch) => {
-    const res = await fetch('/api/events', {
-        method: 'GET'
-    })
+export const getReqsThunk = (eventId, userId) => async (dispatch) => {
+    const request = await fetch(`/api/requests/${eventId}/${userId}`)
+    if (request.ok) {
+        const found = await request.json()
+        dispatch(getOneReqAction(found))
+        return found
+    }
+}
+
+export const getAllReqsThunk = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/requests/${userId}`)
     if (res.ok) {
-        const events = await res.json()
-        dispatch(getReqAction(events))
-        return events
+        const requests = await res.json()
+        console.log(requests)
+        dispatch(getReqAction(requests))
+        return requests
     }
 }
 
 export const postReqsThunk = (payload) => async (dispatch) => {
     const { userId, eventId } = payload
-    console.log(userId, eventId)
     const res = await csrfFetch('/api/requests', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -52,8 +64,8 @@ export const postReqsThunk = (payload) => async (dispatch) => {
     }
 }
 
-export const deleteReqsThunk = (id) => async (dispatch) => {
-    const res = await csrfFetch(`/api/events/${id}`, {
+export const deleteReqsThunk = (eventId, userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/requests/${eventId}/${userId}`, {
         method: 'DELETE'
     })
     if (res.ok) {
@@ -73,7 +85,7 @@ export const updateReqsThunk = (data) => async (dispatch) => {
     })
     if (res.ok) {
         const result = await res.json()
-        console.log(result)
+        console.log(result.Events)
         dispatch(updateReqsAction(result))
         return result
     }
@@ -83,11 +95,10 @@ export const updateReqsThunk = (data) => async (dispatch) => {
 const requestsReducer = (state = {}, action) => {
     let events;
     switch (action.type) {
+        case getOneReq:
+            return { ...state }
         case getReq:
-            events = { ...state }
-            action.list.forEach(event => {
-                events[event.id] = event
-            })
+            events = { ...state, list: action.list }
             return events
         case postReq:
             events = { ...state, [action.event.id]: action.event }

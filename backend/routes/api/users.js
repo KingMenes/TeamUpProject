@@ -5,6 +5,8 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { rsvpList } = require('../../db/models');
+
 const router = express.Router();
 
 const validateSignup = [
@@ -33,7 +35,7 @@ router.post(
     asyncHandler(async (req, res) => {
         const { email, password, username } = req.body;
         const user = await User.signup({ email, username, password });
-
+        await rsvpList.create({ userId: user.id })
         await setTokenCookie(res, user);
 
         return res.json({

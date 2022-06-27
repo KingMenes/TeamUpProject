@@ -8,16 +8,16 @@ module.exports = {
 
       Example:
       */
-    return queryInterface.bulkInsert('RSVPs', [{
-      rsvpListId: 1,
-      eventId: 2,
-      pending: false,
+    return queryInterface.bulkInsert('rsvpLists', [{
+      userId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      rsvpListId: 2,
-      eventId: 3,
-      pending: true,
+      userId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      userId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
     },], {});
@@ -30,6 +30,6 @@ module.exports = {
 
       Example:
       */
-    return queryInterface.bulkDelete('RSVPs', null, {});
+    return queryInterface.bulkDelete('rsvpLists', null, {});
   }
 };
