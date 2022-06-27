@@ -5,9 +5,11 @@ import { getAllReqsThunk, deleteReqsThunk } from "../../store/requests";
 import './myrequests.css'
 
 export default function () {
+    const history = useHistory()
     const dispatch = useDispatch()
     const pending = useSelector(state => { return state.requests.list })
     const userr = useSelector(state => { return state.session.user })
+    if (!userr) history.push('/login')
     const [list, setList] = useState()
     const [status, setStatus] = useState(true)
     let user;

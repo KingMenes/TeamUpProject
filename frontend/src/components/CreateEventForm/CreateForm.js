@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import './createevents.css'
 import { postEventsThunk } from "../../store/events";
-import { restoreCSRF } from "../../store/csrf";
 
 export default function () {
     const dispatch = useDispatch()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [date, setDate] = useState()
+
     const [errors, setErrors] = useState([])
 
     const history = useHistory()
@@ -23,17 +24,36 @@ export default function () {
             if (title.length <= 5) err.push('Title must be longer than 5 characters')
             if (title.length >= 50) err.push('Title must be under 50 characters')
             if (description.length <= 15) err.push('Description must be longer than 15 characters')
+            if (!date) err.push('Please select a date')
+            let year;
+            let month;
+            let day;
+            if (date) {
+                year = date.slice(0, 4)
+                if (parseInt(year) < new Date().getFullYear()) err.push('Date must be in the future')
+                if (parseInt(year) == new Date().getFullYear()) {
+                    month = date.slice(5, 7)
+                    if (parseInt(month) < new Date().getMonth() + 1) err.push('Date must be in the future')
+                    if (parseInt(month) === new Date().getMonth() + 1) {
+                        day = date.slice(8, 11)
+                        if (parseInt(day) <= new Date().getDate()) err.push('Date must be in the future')
+                    }
+                }
+            }
+
+
             setErrors(err)
 
 
-        }, [title, description])
+        }, [title, description, date])
 
         const onSubmit = (e) => {
             e.preventDefault()
             payload = {
                 username,
                 title,
-                description
+                description,
+                date
             }
             dispatch(postEventsThunk(payload))
             history.push('/')
@@ -60,6 +80,10 @@ export default function () {
                         Description
                         <textarea className='inputstuff' onChange={(e) => { setDescription(e.target.value) }} type='text' name='description' value={description}>
                         </textarea>
+                    </label>
+                    <label className='labelforforms'>
+                        Event Date
+                        <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
                     <button disabled={errors.length ? true : false}>Submit</button>
                 </form>

@@ -33,18 +33,19 @@ export const getEventsThunk = () => async (dispatch) => {
     })
     if (res.ok) {
         const events = await res.json()
+        console.log(events)
         dispatch(getEventAction(events))
         return events
     }
 }
 
 export const postEventsThunk = (payload) => async (dispatch) => {
-    const { username, title, description } = payload
+    const { username, title, description, date } = payload
 
     const res = await csrfFetch('/api/events', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, title, description })
+        body: JSON.stringify({ username, title, description, date })
     })
     if (res.ok) {
         const event = await res.json()
@@ -85,7 +86,7 @@ const eventsReducer = (state = {}, action) => {
     let events;
     switch (action.type) {
         case getEvents:
-            events = { ...state }
+            events = { ...state, list: action.list }
             action.list.forEach(event => {
                 events[event.id] = event
             })

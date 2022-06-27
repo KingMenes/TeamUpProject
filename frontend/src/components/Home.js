@@ -15,13 +15,11 @@ export default function HomePage() {
     const events = useSelector(state => {
         return state.events
     })
-    const array = Object.values(events)
-
+    const array = events.list
 
     useEffect(() => {
 
         dispatch(getEventsThunk())
-        // return dispatch(getEventsThunk())
     }, [dispatch])
 
 
@@ -41,9 +39,10 @@ export default function HomePage() {
                             }}>Delete</button>}
 
                             {event.User && <h4>
-                                {event.User.username} at {event.date}
+                                {event.User.username}
                             </h4>}
                             <div className="eventtitle">{event.title}</div>
+                            <div className="eventtitle">Event Date: {event.date}</div>
                             <NavLink to={`/events/${event.id}`}>Click here to see more details on "{event.title}"</NavLink>
                         </li>
 
