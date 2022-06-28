@@ -32,29 +32,31 @@ export default function () {
 
     if (event) {
         return (
-            <>
-                <button onClick={() => { history.goBack() }}>Back</button>
-                {
-                    user === event.userId && <button onClick={(e) => {
-                        dispatch(deleteEventsThunk(event.id))
-                        history.push('/')
-                    }}>Delete</button>
-                }
-                {user && user !== event.userId && <button onClick={async () => {
-                    const request = await dispatch(getReqsThunk(eventId, user))
-                    if (!request) {
-                        await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
-                        console.log(event.User)
-                        window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
-                    } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
+            <div className="eacheventdiv">
+                <div className="buttondiv">
+                    <button className='bunchabuttons' onClick={() => { history.goBack() }}>Back</button>
+                    {
+                        user === event.userId && <button className='bunchabuttons' onClick={(e) => {
+                            dispatch(deleteEventsThunk(event.id))
+                            history.push('/')
+                        }}>Delete</button>
+                    }
+                    {user && user !== event.userId && <button className='bunchabuttons' onClick={async () => {
+                        const request = await dispatch(getReqsThunk(eventId, user))
+                        if (!request) {
+                            await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
+                            console.log(event.User)
+                            window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
+                        } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
 
-                }
-                }>Team up request</button>}
+                    }
+                    }>Team up request</button>}
 
-                <UpdateForm event={event} />
+                    <UpdateForm event={event} />
+                </div>
                 <h1>{event && event.title}</h1>
                 <p>{event && event.description}</p>
-            </>
+            </div>
         )
     }
 }

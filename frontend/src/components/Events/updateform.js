@@ -39,7 +39,7 @@ function UpdateForm({ event }) {
 
     return (
         <>
-            {user === event.userId && <button onClick={() => {
+            {user === event.userId && <button className='bunchabuttons' onClick={() => {
                 if (hidden === 'hidden') {
                     setHidden('nothidden')
                 } else {
