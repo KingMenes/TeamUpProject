@@ -25,7 +25,7 @@ export default function () {
     if (pending) {
         return (
             <div className='teamrequestsdiv'>
-                <h1>My TeamUp Requests</h1>
+                <h1 className="h1">My TeamUp Requests</h1>
                 <ul className="ulteamreq">
                     {pending.map(req => {
                         return (<li className='lireq' key={req.id}>

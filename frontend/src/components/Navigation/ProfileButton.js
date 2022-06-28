@@ -35,8 +35,8 @@ function ProfileButton({ user }) {
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
+                    <li><a href='https://www.linkedin.com/in/brendan-lau-b6952919a/'>LinkedIn</a></li>
+                    <li><a href='https://github.com/BrenLau'>GitHub</a></li>
                     <li>
                         <button onClick={logout}>Log Out</button>
                     </li>

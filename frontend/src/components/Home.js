@@ -29,6 +29,7 @@ export default function HomePage() {
         return (
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
+                <h1 className="h1heheh">Team Ups</h1>
                 <ul>
                     {array.map(event => {
                         return (
