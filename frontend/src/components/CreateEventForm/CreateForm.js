@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './createevents.css'
-import { postEventsThunk } from "../../store/events";
+import { getEventsThunk, postEventsThunk } from "../../store/events";
 
 export default function () {
     const dispatch = useDispatch()
@@ -46,7 +46,7 @@ export default function () {
 
         }, [title, description, date, image])
 
-        const onSubmit = (e) => {
+        const onSubmit = async (e) => {
             e.preventDefault()
             payload = {
                 username,
@@ -55,8 +55,9 @@ export default function () {
                 date,
                 image
             }
-            dispatch(postEventsThunk(payload))
-            history.replace('/')
+            await dispatch(postEventsThunk(payload))
+            await dispatch(getEventsThunk())
+            await history.replace(`/`)
         }
 
         return (

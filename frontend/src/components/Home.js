@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { getEventsThunk, deleteEventsThunk, updateEventsThunk } from "../store/events"
+import { getEventsThunk, deleteEventsThunk } from "../store/events"
 import './home.css'
 
 export default function HomePage() {
@@ -33,17 +33,17 @@ export default function HomePage() {
                 <ul>
                     {array.map(event => {
                         return (
-                            <NavLink className='navLink' to={`/events/${event.id}`}>
-                                <li key={event.id} className="EachEvent">
+                            <NavLink key={event.id} className='navLink' to={`/events/${event.id}`}>
+                                <li className="EachEvent">
                                     {user === event.userId && <button onClick={(e) => {
                                         dispatch(deleteEventsThunk(event.id))
                                         updateStatus(!status)
                                     }}>Delete</button>}
 
-                                    {event.User && <h4>
-                                        {event.User.username}
+                                    {event.User && <h4>{event.title}
+
                                     </h4>}
-                                    <div className="eventtitle">{event.title}</div>
+                                    <div className="eventtitle">Posted by {event.User.username}</div>
                                     <div className="eventtitle">Event Date: {event.date}</div>
                                 </li>
                             </NavLink>
@@ -53,5 +53,5 @@ export default function HomePage() {
                 </ul>
             </>
         )
-    }
+    } else return null
 }

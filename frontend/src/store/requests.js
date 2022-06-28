@@ -44,7 +44,6 @@ export const getAllReqsThunk = (userId) => async (dispatch) => {
     const res = await fetch(`/api/requests/${userId}`)
     if (res.ok) {
         const requests = await res.json()
-        console.log(requests)
         dispatch(getReqAction(requests))
         return requests
     }

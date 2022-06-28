@@ -4,7 +4,6 @@ const getEvents = '/getEvents'
 const postEvent = '/postEvent'
 const updateEvent = '/updateEvent'
 const deleteEvent = '/deleteEvent'
-const getOneEvent = '/justGetOneEvent'
 
 
 const getEventAction = (list) => ({
@@ -33,7 +32,6 @@ export const getEventsThunk = () => async (dispatch) => {
     })
     if (res.ok) {
         const events = await res.json()
-        console.log(events)
         dispatch(getEventAction(events))
         return events
     }

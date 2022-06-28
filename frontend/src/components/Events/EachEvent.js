@@ -9,7 +9,6 @@ import { postReqsThunk, getReqsThunk, getAllReqsThunk } from "../../store/reques
 export default function () {
     const dispatch = useDispatch()
     const history = useHistory()
-    const pending = useSelector(state => { return state })
     const userr = useSelector(state => { return state.session.user })
     let user;
     if (userr) user = userr.id
