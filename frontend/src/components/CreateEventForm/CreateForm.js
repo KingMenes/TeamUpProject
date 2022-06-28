@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './createevents.css'
-import { postEventsThunk } from "../../store/events";
+import { getEventsThunk, postEventsThunk } from "../../store/events";
 
 export default function () {
     const dispatch = useDispatch()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [date, setDate] = useState()
-
+    const [image, setImage] = useState()
     const [errors, setErrors] = useState([])
 
     const history = useHistory()
@@ -41,28 +41,29 @@ export default function () {
                 }
             }
 
-
             setErrors(err)
 
 
-        }, [title, description, date])
+        }, [title, description, date, image])
 
-        const onSubmit = (e) => {
+        const onSubmit = async (e) => {
             e.preventDefault()
             payload = {
                 username,
                 title,
                 description,
-                date
+                date,
+                image
             }
-            dispatch(postEventsThunk(payload))
-            history.push('/')
+            await dispatch(postEventsThunk(payload))
+            await dispatch(getEventsThunk())
+            await history.replace(`/`)
         }
 
         return (
             <div className="createcontain">
                 <button onClick={() => { history.goBack() }}>Back</button>
-                <h1>Create a Team Up event</h1>
+                <h1 className="titleforcreate">Create a Team Up event</h1>
                 {errors && <ul className="ulcreateform">
                     {errors.map(error => {
                         return (
@@ -85,6 +86,11 @@ export default function () {
                         Event Date
                         <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
+                    <label className="labelforforms">
+                        Image URL
+                        <input onChange={(e) => { setImage(e.target.value) }} type='text'></input>
+                    </label>
+
                     <button disabled={errors.length ? true : false}>Submit</button>
                 </form>
 

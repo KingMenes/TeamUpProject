@@ -9,7 +9,6 @@ import { postReqsThunk, getReqsThunk, getAllReqsThunk } from "../../store/reques
 export default function () {
     const dispatch = useDispatch()
     const history = useHistory()
-    const pending = useSelector(state => { return state })
     const userr = useSelector(state => { return state.session.user })
     let user;
     if (userr) user = userr.id
@@ -21,8 +20,6 @@ export default function () {
         return state.events
     })
     const event = events[eventId]
-
-    console.log(event)
 
     useEffect(() => {
         dispatch(getAllReqsThunk(user))
@@ -45,7 +42,6 @@ export default function () {
                         const request = await dispatch(getReqsThunk(eventId, user))
                         if (!request) {
                             await dispatch(postReqsThunk({ userId: user, eventId: event.id }))
-                            console.log(event.User)
                             window.alert(`Successfully applied to ${event.User.username}'s event ${event.title}`)
                         } else window.alert(`Already applied to ${event.User.username}'s event '${event.title}'`)
 
@@ -56,6 +52,7 @@ export default function () {
                 </div>
                 <h1>{event && event.title}</h1>
                 <p>{event && event.description}</p>
+                {event.image && <img className='images' src={event.image}></img>}
             </div>
         )
     }

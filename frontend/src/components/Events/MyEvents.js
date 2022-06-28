@@ -18,11 +18,6 @@ export default function MyEvents() {
     const array = events.list
 
 
-
-    console.log(array)
-
-
-
     useEffect(() => {
 
         dispatch(getEventsThunk())
@@ -41,19 +36,21 @@ export default function MyEvents() {
                     {arr.map(event => {
                         return (
 
-                            <li key={event.id} className="EachEvent">
-                                {user === event.userId && <button onClick={(e) => {
-                                    dispatch(deleteEventsThunk(event.id))
-                                    updateStatus(!status)
-                                }}>Delete</button>}
+                            <NavLink className='navLink' key={event.id} to={`/events/${event.id}`}>
 
-                                {event.User && <h4>
-                                    {event.User.username}
-                                </h4>}
-                                <div className="eventtitle">{event.title}</div>
-                                <div className="eventtitle">Event Date: {event.date}</div>
-                                <NavLink to={`/events/${event.id}`}>Click here to see more details on "{event.title}"</NavLink>
-                            </li>
+                                <li className="EachEvent">
+                                    {user === event.userId && <button onClick={(e) => {
+                                        dispatch(deleteEventsThunk(event.id))
+                                        updateStatus(!status)
+                                    }}>Delete</button>}
+
+                                    {event.User && <h4>
+                                        {event.title}
+                                    </h4>}
+                                    <div className="eventtitle">{event.User.username}</div>
+                                    <div className="eventtitle">Event Date: {event.date}</div>
+                                </li>
+                            </NavLink>
 
                         )
                     })}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams, NavLink } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import { getAllReqsThunk, deleteReqsThunk } from "../../store/requests";
 import './myrequests.css'
 
