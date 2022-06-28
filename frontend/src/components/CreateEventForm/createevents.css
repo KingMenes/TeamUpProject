@@ -4,6 +4,7 @@
 }
 
 .ulcreateform {
+    background-color: antiquewhite;
     margin: 30px;
     display: flex;
     justify-content: center;
@@ -11,9 +12,11 @@
     align-items: center;
     border: 1px solid black;
     width: 80%;
+    border-radius: 6px;
 }
 
 .formcreate {
+    background-color: antiquewhite;
     margin: 30px;
     display: flex;
     justify-content: center;
@@ -21,6 +24,7 @@
     align-items: center;
     border: 1px solid black;
     width: 80%;
+    border-radius: 8px;
 }
 
 .labelforforms {
