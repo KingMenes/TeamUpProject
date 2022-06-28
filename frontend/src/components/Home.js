@@ -24,7 +24,7 @@ export default function HomePage() {
 
 
 
-    if (array) {
+    if (events && array) {
 
         return (
             <>
