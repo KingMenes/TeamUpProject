@@ -9,7 +9,7 @@ export default function () {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [date, setDate] = useState()
-
+    const [image, setImage] = useState()
     const [errors, setErrors] = useState([])
 
     const history = useHistory()
@@ -40,12 +40,12 @@ export default function () {
                     }
                 }
             }
-
+            console.log(image)
 
             setErrors(err)
 
 
-        }, [title, description, date])
+        }, [title, description, date, image])
 
         const onSubmit = (e) => {
             e.preventDefault()
@@ -56,7 +56,7 @@ export default function () {
                 date
             }
             dispatch(postEventsThunk(payload))
-            history.push('/')
+            history.replace('/')
         }
 
         return (
@@ -85,6 +85,10 @@ export default function () {
                         Event Date
                         <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
+                    <label>
+                        <input accept='image/*' onChange={(e) => { setImage(e.target.value) }} type='file'></input>
+                    </label>
+
                     <button disabled={errors.length ? true : false}>Submit</button>
                 </form>
 
