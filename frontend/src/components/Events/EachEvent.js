@@ -21,7 +21,6 @@ export default function () {
         return state.events
     })
     const event = events[eventId]
-
     console.log(event)
 
     useEffect(() => {
@@ -56,6 +55,7 @@ export default function () {
                 </div>
                 <h1>{event && event.title}</h1>
                 <p>{event && event.description}</p>
+                <img className='images' src={event.image}></img>
             </div>
         )
     }

@@ -40,7 +40,6 @@ export default function () {
                     }
                 }
             }
-            console.log(image)
 
             setErrors(err)
 
@@ -53,7 +52,8 @@ export default function () {
                 username,
                 title,
                 description,
-                date
+                date,
+                image
             }
             dispatch(postEventsThunk(payload))
             history.replace('/')
@@ -85,8 +85,9 @@ export default function () {
                         Event Date
                         <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
-                    <label>
-                        <input accept='image/*' onChange={(e) => { setImage(e.target.value) }} type='file'></input>
+                    <label className="labelforforms">
+                        Image URL
+                        <input onChange={(e) => { setImage(e.target.value) }} type='text'></input>
                     </label>
 
                     <button disabled={errors.length ? true : false}>Submit</button>

@@ -40,12 +40,12 @@ export const getEventsThunk = () => async (dispatch) => {
 }
 
 export const postEventsThunk = (payload) => async (dispatch) => {
-    const { username, title, description, date } = payload
+    const { username, title, description, date, image } = payload
 
     const res = await csrfFetch('/api/events', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, title, description, date })
+        body: JSON.stringify({ username, title, description, date, image })
     })
     if (res.ok) {
         const event = await res.json()

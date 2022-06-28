@@ -33,20 +33,20 @@ export default function HomePage() {
                 <ul>
                     {array.map(event => {
                         return (
+                            <NavLink className='navLink' to={`/events/${event.id}`}>
+                                <li key={event.id} className="EachEvent">
+                                    {user === event.userId && <button onClick={(e) => {
+                                        dispatch(deleteEventsThunk(event.id))
+                                        updateStatus(!status)
+                                    }}>Delete</button>}
 
-                            <li key={event.id} className="EachEvent">
-                                {user === event.userId && <button onClick={(e) => {
-                                    dispatch(deleteEventsThunk(event.id))
-                                    updateStatus(!status)
-                                }}>Delete</button>}
-
-                                {event.User && <h4>
-                                    {event.User.username}
-                                </h4>}
-                                <div className="eventtitle">{event.title}</div>
-                                <div className="eventtitle">Event Date: {event.date}</div>
-                                <NavLink to={`/events/${event.id}`}>Click here to see more details on "{event.title}"</NavLink>
-                            </li>
+                                    {event.User && <h4>
+                                        {event.User.username}
+                                    </h4>}
+                                    <div className="eventtitle">{event.title}</div>
+                                    <div className="eventtitle">Event Date: {event.date}</div>
+                                </li>
+                            </NavLink>
 
                         )
                     })}
