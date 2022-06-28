@@ -14,9 +14,14 @@ export default function MyEvents() {
     const events = useSelector(state => {
         return state.events
     })
-    const array = events.list.filter(ele => {
-        return ele.userId === user
-    })
+
+    const array = events.list
+
+
+
+    console.log(array)
+
+
 
     useEffect(() => {
 
@@ -26,12 +31,14 @@ export default function MyEvents() {
 
 
     if (array) {
-
+        const arr = array.filter(ele => {
+            return ele.userId === user
+        })
         return (
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <ul>
-                    {array.map(event => {
+                    {arr.map(event => {
                         return (
 
                             <li key={event.id} className="EachEvent">
