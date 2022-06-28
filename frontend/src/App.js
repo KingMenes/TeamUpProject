@@ -39,10 +39,10 @@ function App() {
           <Route exact path="/events/:eventId">
             <EachEvent />
           </Route>
-          <Route path='/myrequests'>
+          <Route exact path='/myrequests'>
             <MyRequests />
           </Route>
-          <Route path='/myevents'>
+          <Route exact path='/myevents'>
             <MyEvents />
           </Route>
 
