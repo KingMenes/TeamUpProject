@@ -62,7 +62,7 @@ export default function () {
         return (
             <div className="createcontain">
                 <button onClick={() => { history.goBack() }}>Back</button>
-                <h1>Create a Team Up event</h1>
+                <h1 className="titleforcreate">Create a Team Up event</h1>
                 {errors && <ul className="ulcreateform">
                     {errors.map(error => {
                         return (

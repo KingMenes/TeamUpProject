@@ -8,12 +8,12 @@
     width: 80%;
     border: solid 1px;
     box-shadow: 3px 3px 3px;
-    height: 300px;
     display: flex;
     flex-direction: column;
     text-align: center;
     background-color: whitesmoke;
     margin: 24px;
+    border-radius: 10px;
     /* text-justify: center; */
 }
 
@@ -34,6 +34,8 @@ button {
 input {
     width: fit-content;
     align-self: center;
+    border-radius: 10px;
+
 }
 
 .LoginForm {

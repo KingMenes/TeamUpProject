@@ -36,6 +36,14 @@
     margin-top: 20px;
 }
 
+.titleforcreate {
+    background-color: antiquewhite;
+    border: solid 2px black;
+    border-radius: 10px;
+    font-size: 38px;
+
+}
+
 .createcontain {
     display: flex;
     justify-content: center;
