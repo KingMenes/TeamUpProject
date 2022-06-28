@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { getEventsThunk, deleteEventsThunk } from "../../store/events"
+
 
 export default function MyEvents() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [status, updateStatus] = useState(true);
 
     const userr = useSelector(state => { return state.session.user })
@@ -21,7 +23,7 @@ export default function MyEvents() {
     useEffect(() => {
 
         dispatch(getEventsThunk())
-    }, [dispatch])
+    }, [dispatch, status])
 
 
 
@@ -39,9 +41,12 @@ export default function MyEvents() {
                             <NavLink className='navLink' key={event.id} to={`/events/${event.id}`}>
 
                                 <li className="EachEvent">
-                                    {user === event.userId && <button onClick={(e) => {
-                                        dispatch(deleteEventsThunk(event.id))
+                                    {user === event.userId && <button onClick={async (e) => {
+                                        e.preventDefault()
+                                        await dispatch(deleteEventsThunk(event.id))
                                         updateStatus(!status)
+
+                                        history.push('/myevents')
                                     }}>Delete</button>}
 
                                     {event.User && <h4>

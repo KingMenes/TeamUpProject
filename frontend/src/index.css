@@ -2,12 +2,17 @@
 
 #root {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
 body {
     width: 100%;
     margin: 0;
-    position: static;
-    background: local url(../../wordart.jpeg);
+    /* position: static; */
+    background: url(../../wordart.jpeg);
+    padding: 0;
+
 }

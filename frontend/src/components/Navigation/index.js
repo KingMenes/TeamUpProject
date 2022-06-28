@@ -32,15 +32,13 @@ function Navigation({ isLoaded }) {
 
 
     return (
-        <div className='uldiv'>
-            <ul className='navul'>
-                <li className='nav'>
-                    <NavLink exact to="/">Home</NavLink>
-                </li>
-                <NavLink exact to='/'><img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img></NavLink>
-                {isLoaded && sessionLinks}
-            </ul>
-        </div>
+        <ul className='navul'>
+            <li className='nav'>
+                <NavLink exact to="/">Home</NavLink>
+            </li>
+            <NavLink exact to='/'><img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img></NavLink>
+            {isLoaded && sessionLinks}
+        </ul>
     );
 }
 

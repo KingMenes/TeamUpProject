@@ -30,7 +30,7 @@ export default function HomePage() {
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <h1 className="h1heheh">Team Ups</h1>
-                <ul>
+                <ul className="culprit">
                     {array.map(event => {
                         return (
                             <NavLink key={event.id} className='navLink' to={`/events/${event.id}`}>
