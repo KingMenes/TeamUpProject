@@ -8,18 +8,17 @@ const router = express.Router();
 const db = require('../../db/models')
 
 router.get('/', async (req, res) => {
-    const list = await db.Event.findAll({ include: db.User })
+    const list = await db.Event.findAll({ order: [['date', 'ASC']], include: db.User })
     res.json(list)
 })
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { username, title, description } = req.body
+    const { username, title, description, date } = req.body
     const user = (username.username)
-    console.log(user)
     const userId = await db.User.findOne({ where: { username: user } })
     const id = userId.id
 
-    const event = await db.Event.create({ userId: id, title, description, date: new Date() })
+    const event = await db.Event.create({ userId: id, title, description, date })
 
     return res.json(event)
 }))

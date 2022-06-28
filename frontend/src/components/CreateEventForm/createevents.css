@@ -2,3 +2,44 @@
     color: red;
     list-style-type: disc;
 }
+
+.ulcreateform {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    width: 80%;
+}
+
+.formcreate {
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    width: 80%;
+}
+
+.labelforforms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.createcontain {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputstuff {
+    width: 80%;
+    text-align: center;
+}

@@ -9,9 +9,13 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <li className='lol'>
-                <ProfileButton user={sessionUser} />
-            </li>
+            <>
+                <NavLink to='/myevents'>My Events</NavLink>
+                <NavLink to='/myrequests'>My Requests</NavLink>
+                <li className='lol'>
+                    <ProfileButton user={sessionUser} />
+                </li>
+            </>
         );
     } else {
         sessionLinks = (
@@ -33,7 +37,7 @@ function Navigation({ isLoaded }) {
                 <li className='nav'>
                     <NavLink exact to="/">Home</NavLink>
                 </li>
-                <img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img>
+                <NavLink exact to='/'><img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img></NavLink>
                 {isLoaded && sessionLinks}
             </ul>
         </div>
