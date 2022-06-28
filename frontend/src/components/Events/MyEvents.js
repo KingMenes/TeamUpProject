@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { getEventsThunk, deleteEventsThunk } from "../../store/events"
+import './eachevent.css'
 
 
 export default function MyEvents() {
@@ -34,7 +35,7 @@ export default function MyEvents() {
         return (
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
-                <ul>
+                <ul className="ulformine">
                     {arr.map(event => {
                         return (
 

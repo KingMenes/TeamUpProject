@@ -62,7 +62,6 @@ export default function () {
 
         return (
             <div className="createcontain">
-                <button onClick={() => { history.goBack() }}>Back</button>
                 <h1 className="titleforcreate">Create a Team Up event</h1>
                 {errors && <ul className="ulcreateform">
                     {errors.map(error => {
@@ -72,6 +71,7 @@ export default function () {
                     })}
                 </ul>}
                 <form className='formcreate' onSubmit={onSubmit}>
+                    <button className='backbutton' onClick={() => { history.goBack() }}>Back</button>
                     <label className='labelforforms'>
                         Title
                         <input className='inputstuff' onChange={(e) => setTitle(e.target.value)} type='text' name='title' value={title}>

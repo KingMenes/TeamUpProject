@@ -1,6 +1,8 @@
 .errors {
+    padding: 3px;
     color: red;
     list-style-type: disc;
+    width: 50%;
 }
 
 .ulcreateform {
@@ -13,6 +15,11 @@
     border: 1px solid black;
     width: 80%;
     border-radius: 6px;
+}
+
+.backbutton {
+    width: 80px;
+    background-color: aliceblue;
 }
 
 .formcreate {
@@ -41,6 +48,7 @@
     border: solid 2px black;
     border-radius: 10px;
     font-size: 38px;
+    padding: 12px;
 
 }
 
