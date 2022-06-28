@@ -28,38 +28,41 @@ function LoginFormPage() {
     }
 
     return (
-        <form className='LoginForm' onSubmit={handleSubmit}>
-            <h2>Log in</h2>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <label className='label'>
-                Username or Email
-                <input
-                    id='usernameid'
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label className='label'>
-                Password
-                <input
-                    id='passwordid'
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Log In</button>
-            <button onClick={(e) => {
-                e.preventDefault()
-                dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
-            }} className='demo'>Demo</button>
-            <NavLink to='/signup'>Don't have an account? Click here</NavLink>
-        </form>
+        <div className='logindivform'>
+
+            <form className='LoginForm' onSubmit={handleSubmit}>
+                <h2>Log in</h2>
+                <ul>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+                <label className='label'>
+                    Username or Email
+                    <input
+                        id='usernameid'
+                        type="text"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                    />
+                </label>
+                <label className='label'>
+                    Password
+                    <input
+                        id='passwordid'
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+                <button type="submit">Log In</button>
+                <button onClick={(e) => {
+                    e.preventDefault()
+                    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+                }} className='demo'>Demo</button>
+                <NavLink to='/signup'>Don't have an account? Click here</NavLink>
+            </form>
+        </div>
     );
 }
 

@@ -8,7 +8,16 @@
     text-align: center;
     justify-content: center;
     height: 100%;
+    background-color: whitesmoke;
+    margin: 24px;
+    padding: 12px;
     /* text-justify: center; */
+}
+
+.signupdiv {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 #root {
