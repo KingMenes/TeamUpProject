@@ -6,6 +6,13 @@ const updateReq = '/updateReq'
 const deleteReq = '/deleteReq'
 const getOneReq = '/justGetOneReq'
 
+const getAll = 'getAll'
+
+const getAllAction = (rsvps) => ({
+    type: getAll,
+    rsvps
+})
+
 const getOneReqAction = (req) => ({
     type: getOneReq,
     req
@@ -30,6 +37,15 @@ const deleteReqAction = (event) => ({
     type: deleteReq,
     event
 })
+
+export const getAllThunk = (eventId) => async (dispatch) => {
+    const request = await fetch(`/api/requests/getallrequests/${eventId}`)
+    if (request.ok) {
+        const rsvps = await request.json()
+        dispatch(getAllAction(rsvps))
+        return rsvps
+    }
+}
 
 export const getReqsThunk = (eventId, userId) => async (dispatch) => {
     const request = await fetch(`/api/requests/${eventId}/${userId}`)
@@ -94,6 +110,8 @@ export const updateReqsThunk = (data) => async (dispatch) => {
 const requestsReducer = (state = {}, action) => {
     let events;
     switch (action.type) {
+        case getAll:
+            return { ...state, rsvps: action.rsvps }
         case getOneReq:
             return { ...state }
         case getReq:
