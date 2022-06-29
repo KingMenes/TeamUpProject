@@ -36,11 +36,19 @@ router.post('/', singleMulterUpload('file'), asyncHandler(async (req, res) => {
 
 }))
 
-router.put('/:eventId', asyncHandler(async (req, res) => {
-    const eventId = req.body.id
+router.put('/:eventId', singleMulterUpload('file'), asyncHandler(async (req, res) => {
+    const { eventId } = req.params
+    const { username, title, description, date } = req.body
+
+    console.log('--------------------------------')
+    console.log(eventId)
+    console.log(title)
     const event = await db.Event.findByPk(eventId, { include: db.User })
-    event.title = req.body.title
-    event.description = req.body.description
+    console.log(event)
+    event.title = title
+    event.description = description
+    event.date = date
+    event.image = await singlePublicFileUpload(req.file)
     await event.save()
     return res.json(event.dataValues)
 }))

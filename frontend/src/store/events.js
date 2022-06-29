@@ -74,12 +74,22 @@ export const deleteEventsThunk = (id) => async (dispatch) => {
 }
 
 export const updateEventsThunk = (data) => async (dispatch) => {
-    const { title, description, file } = data
+    const { username, title, description, date, file } = data
+    const formData = new FormData()
+    console.log(title)
+    formData.append('username', username)
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('date', date)
+
+    if (file) {
+        formData.append('file', file)
+    }
 
     const res = await csrfFetch(`/api/events/${data.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: data.id, title, description })
+        headers: { 'Content-Type': "multipart/form-data" },
+        body: formData
     })
     if (res.ok) {
         const result = await res.json()
