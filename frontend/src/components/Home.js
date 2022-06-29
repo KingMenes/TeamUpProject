@@ -20,7 +20,7 @@ export default function HomePage() {
     useEffect(() => {
 
         dispatch(getEventsThunk())
-    }, [dispatch])
+    }, [dispatch, status])
 
 
 
@@ -35,9 +35,10 @@ export default function HomePage() {
                         return (
                             <NavLink key={event.id} className='navLink' to={`/events/${event.id}`}>
                                 <li className="EachEvent">
-                                    {user === event.userId && <button onClick={(e) => {
-                                        dispatch(deleteEventsThunk(event.id))
-                                        updateStatus(!status)
+                                    {user === event.userId && <button onClick={async (e) => {
+                                        e.preventDefault()
+                                        await dispatch(deleteEventsThunk(event.id))
+                                        await updateStatus(!status)
                                     }}>Delete</button>}
 
                                     {event.User && <h4>{event.title}

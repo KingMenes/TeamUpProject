@@ -38,18 +38,28 @@ export const getEventsThunk = () => async (dispatch) => {
 }
 
 export const postEventsThunk = (payload) => async (dispatch) => {
-    const { username, title, description, date, image } = payload
+    const { username, title, description, date, file } = payload
+    const formData = new FormData();
+    formData.append('username', username)
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('date', date)
+
+    if (file) {
+        formData.append('file', file)
+    }
 
     const res = await csrfFetch('/api/events', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, title, description, date, image })
-    })
-    if (res.ok) {
-        const event = await res.json()
-        dispatch(postEventAction(event))
-        return event
-    }
+        method: "POST",
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
+    });
+    const event = await res.json()
+    dispatch(postEventAction(event))
+    return event
+
 }
 
 export const deleteEventsThunk = (id) => async (dispatch) => {
