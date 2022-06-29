@@ -58,19 +58,20 @@ export default function () {
                         }>Team up request</button>}
                     </div>
                     <h1>{event && event.title}</h1>
+                    <p>Event Date: {event.date}</p>
                     <p>{event && event.description}</p>
                     {event.image && <img className='images' src={event.image}></img>}
 
                     <UpdateForm event={event} />
+                    {rsvps && <ul className="listofrsvps">
+                        <h2 className='rsvptitle' >RSVP List</h2>
+                        {rsvps.map(rsvp => {
+                            return (
+                                <li className="rsvplist">{rsvp.username}</li>
+                            )
+                        })}
+                    </ul>}
                 </div>
-                {rsvps && <ul className="listofrsvps">
-                    <h2 className='rsvptitle' >RSVP List</h2>
-                    {rsvps.map(rsvp => {
-                        return (
-                            <li className="rsvplist">{rsvp.username}</li>
-                        )
-                    })}
-                </ul>}
             </>
         )
     }

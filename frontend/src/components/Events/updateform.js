@@ -29,7 +29,7 @@ export default function ({ event }) {
             if (title.length <= 5) err.push('Title must be longer than 5 characters')
             if (title.length >= 50) err.push('Title must be under 50 characters')
             if (description.length <= 15) err.push('Description must be longer than 15 characters')
-            if (!date) err.push('Please select a date')
+            // if (!date) err.push('Please select a date')
             if (file) {
                 const string = file.name.slice(file.name.length - 4, file.name.length)
                 if (string !== '.png' && string !== '.jpg' && string !== 'jpeg') err.push('File must be image type: jpg, png')
@@ -87,6 +87,7 @@ export default function ({ event }) {
                         setHidden('hidden')
                     }
                 }}>Edit</button>}
+                <h2 className={hidden}>Edit</h2>
                 {errors && <ul className={`ulcreateform ${hidden}`}>
                     {errors.map(error => {
                         return (
