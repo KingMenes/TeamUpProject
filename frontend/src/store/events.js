@@ -74,7 +74,7 @@ export const deleteEventsThunk = (id) => async (dispatch) => {
 }
 
 export const updateEventsThunk = (data) => async (dispatch) => {
-    const { title, description } = data
+    const { title, description, file } = data
 
     const res = await csrfFetch(`/api/events/${data.id}`, {
         method: 'PUT',

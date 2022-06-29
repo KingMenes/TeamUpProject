@@ -11,6 +11,7 @@ function UpdateForm({ event }) {
 
     const [title, setTitle] = useState(event.title)
     const [description, setDescription] = useState(event.description)
+    const [file, setFile] = useState()
 
 
     const [hidden, setHidden] = useState('hidden')
@@ -20,9 +21,13 @@ function UpdateForm({ event }) {
         const err = []
         if (title.length <= 5) err.push('Title must be longer than 5 characters')
         if (title.length >= 50) err.push('Title must be under 50 characters')
+        if (file) {
+            const string = file.name.slice(file.name.length - 4, file.name.length)
+            if (string !== '.png' && string !== '.jpg' && string !== 'jpeg') err.push('File must be image type: jpg, png')
+        }
         if (description.length <= 15) err.push('Description must be longer than 15 characters')
         setErrors(err)
-    }, [title, description])
+    }, [title, description, file])
 
     let payload;
 
@@ -31,12 +36,17 @@ function UpdateForm({ event }) {
         payload = {
             id: event.id,
             title,
-            description
+            description,
+            file
         }
         dispatch(updateEventsThunk(payload))
         setHidden('hidden')
     }
-
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setFile(file);
+        console.log(file.name)
+    };
     return (
         <>
             {user === event.userId && <button className='bunchabuttons' onClick={() => {
@@ -59,6 +69,10 @@ function UpdateForm({ event }) {
                 </label>
                 <label className="labelforforms">Description
                     <textarea onChange={(e) => { setDescription(e.target.value) }} type='text' value={description}></textarea>
+                </label>
+                <label className="labelforforms">
+                    Insert Image
+                    <input className='inputsuff' type='file' value={file} onChange={updateFile} />
                 </label>
                 <button>Submit Changes</button>
             </form>
