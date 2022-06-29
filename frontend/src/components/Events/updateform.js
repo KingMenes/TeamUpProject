@@ -54,10 +54,10 @@ function UpdateForm({ event }) {
                         <div>{er}</div>
                     )
                 })}
-                <label>Title
+                <label className="labelforforms">Title
                     <input onChange={(e) => { setTitle(e.target.value) }} type='text' value={title}></input>
                 </label>
-                <label>Description
+                <label className="labelforforms">Description
                     <textarea onChange={(e) => { setDescription(e.target.value) }} type='text' value={description}></textarea>
                 </label>
                 <button>Submit Changes</button>
