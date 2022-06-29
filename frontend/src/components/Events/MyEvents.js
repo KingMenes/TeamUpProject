@@ -45,7 +45,7 @@ export default function MyEvents() {
                                     {user === event.userId && <button onClick={async (e) => {
                                         e.preventDefault()
                                         await dispatch(deleteEventsThunk(event.id))
-                                        updateStatus(!status)
+                                        await updateStatus(!status)
 
                                         history.push('/myevents')
                                     }}>Delete</button>}
