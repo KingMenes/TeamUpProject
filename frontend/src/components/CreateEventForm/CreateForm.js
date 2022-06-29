@@ -11,6 +11,7 @@ export default function () {
     const [date, setDate] = useState()
     const [image, setImage] = useState()
     const [errors, setErrors] = useState([])
+    const [file, setFile] = useState(null)
 
     const history = useHistory()
     const username = useSelector(state => state.session.user)
@@ -25,6 +26,10 @@ export default function () {
             if (title.length >= 50) err.push('Title must be under 50 characters')
             if (description.length <= 15) err.push('Description must be longer than 15 characters')
             if (!date) err.push('Please select a date')
+            if (file) {
+                const string = file.name.slice(file.name.length - 4, file.name.length)
+                if (string !== '.png' && string !== '.jpg' && string !== 'jpeg') err.push('File must be image type: jpg, png')
+            }
             let year;
             let month;
             let day;
@@ -44,21 +49,28 @@ export default function () {
             setErrors(err)
 
 
-        }, [title, description, date, image])
+        }, [title, description, date, image, file])
 
         const onSubmit = async (e) => {
             e.preventDefault()
             payload = {
-                username,
+                username: username.username,
                 title,
                 description,
                 date,
-                image
+                image,
+                file
             }
             await dispatch(postEventsThunk(payload))
             await dispatch(getEventsThunk())
             await history.replace(`/`)
         }
+
+        const updateFile = (e) => {
+            const file = e.target.files[0];
+            if (file) setFile(file);
+            console.log(file.name)
+        };
 
         return (
             <div className="createcontain">
@@ -86,9 +98,10 @@ export default function () {
                         Event Date
                         <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
+
                     <label className="labelforforms">
-                        Image URL
-                        <input onChange={(e) => { setImage(e.target.value) }} type='text'></input>
+                        Insert Image
+                        <input className='inputsuff' type='file' onChange={updateFile} />
                     </label>
 
                     <button disabled={errors.length ? true : false}>Submit</button>

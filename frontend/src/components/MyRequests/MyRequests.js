@@ -32,7 +32,7 @@ export default function () {
                             <NavLink to={`/events/${req.id}`}>{req.title}</NavLink>
                             <button className='delbutt' onClick={async (e) => {
                                 await dispatch(deleteReqsThunk(req.id, user))
-                                setStatus(!status)
+                                await setStatus(!status)
                             }}>Delete</button>
                         </li>
                         )
