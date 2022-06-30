@@ -10,8 +10,8 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <NavLink to='/myevents'>My Events</NavLink>
-                <NavLink to='/myrequests'>My Requests</NavLink>
+                <NavLink className='links' to='/myevents'>My Events</NavLink>
+                <NavLink className='links' to='/myrequests'>My Requests</NavLink>
                 <li className='lol'>
                     <ProfileButton user={sessionUser} />
                 </li>
@@ -20,8 +20,8 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <div className='sessionlinks'>
-                <li className='lisession'>
-                    <NavLink to="/login">Log In</NavLink>
+                <li>
+                    <NavLink className='lisession' to="/login">Log In</NavLink>
                 </li>
                 <li>
                     <NavLink className='lisession' to="/signup">Sign Up</NavLink>

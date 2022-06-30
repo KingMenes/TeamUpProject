@@ -21,7 +21,16 @@ body {
     margin-bottom: 40px;
 }
 
-
+.links {
+    font-family: cursive;
+    color: black;
+    border: solid 1px black;
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: whitesmoke;
+    padding: 2px;
+    margin: 2px;
+}
 
 .logo {
     height: 25px;
@@ -78,17 +87,33 @@ body {
     flex-direction: column;
     position: absolute;
     top: 33px;
-    right: 0px;
+    right: -3px;
     border: solid 1px;
-    height: fit-content;
+    height: 100px;
     width: fit-content;
     margin: 1px;
     background-color: antiquewhite;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    border-top: none;
+}
 
+.lisession {
+    font-family: cursive;
+    color: black;
+    background-color: whitesmoke;
+    text-decoration: none;
+    border-radius: 3px;
 }
 
 .home {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
     /* background-color: antiquewhite; */
+}
+
+.eachli {
+    margin: 5px;
 }

@@ -9,6 +9,12 @@
     /* margin-right: 40px; */
     min-width: fit-content;
     /* width: 80%; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1 {
+    font-family: fantasy;
+    color: black;
 }
 
 body {
@@ -48,6 +54,15 @@ body {
 
 }
 
+button {
+    font-family: cursive;
+}
+
+label {
+    font-family: cursive;
+    color: black;
+}
+
 #searchbar {
     width: 100%;
     display: flex;
@@ -69,6 +84,7 @@ body {
     border-radius: 3px;
     padding: 3px;
     font-weight: bold;
+    font-family: cursive;
 }
 
 .backandforth {
@@ -103,11 +119,14 @@ body {
     position: relative;
     top: 25px;
     left: 20px;
-    border: 1px solid black;
-    border-radius: 3px;
+    border: 3px solid black;
+    border-radius: 10px;
     padding: 5px;
     text-decoration: none;
-    width: 100px;
+    width: fit-content;
+    font-family: cursive;
+    font-size: 16px;
+    background-color: whitesmoke;
 
 }
 
@@ -131,4 +150,16 @@ body {
     text-decoration: none;
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.delb {
+    position: relative;
+    top: 0px;
+    left: 40%;
+}
+
+.delb:hover {
+    background-color: darkred;
+    color: whitesmoke;
+    font-weight: bold;
 }

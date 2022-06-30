@@ -49,7 +49,7 @@ export default function HomePage() {
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <h1 className="h1heheh">Team Ups</h1>
                 <div id='searchbar'>
-                    <label className="filter">Filter<input onChange={(e) => { setString(e.target.value) }}></input></label>
+                    <label className="filter">Filter: <input onChange={(e) => { setString(e.target.value) }}></input></label>
                 </div>
                 <div className="backforthdiv">
 
@@ -69,7 +69,8 @@ export default function HomePage() {
                         return (
                             <NavLink key={event.id} className='navLink' to={`/events/${event.id}`}>
                                 <li className="EachEvent">
-                                    {user === event.userId && <button onClick={async (e) => {
+                                    {user === event.userId && <button className='delb' onClick={async (e) => {
+                                        e.stopPropagation()
                                         e.preventDefault()
                                         await dispatch(deleteEventsThunk(event.id))
                                         await updateStatus(!status)
