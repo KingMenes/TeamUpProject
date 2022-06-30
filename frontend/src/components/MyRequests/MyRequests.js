@@ -29,7 +29,7 @@ export default function () {
                 <ul className="ulteamreq">
                     {pending.map(req => {
                         return (<li className='lireq' key={req.id}>
-                            <NavLink to={`/events/${req.id}`}>{req.title}</NavLink>
+                            <NavLink className='navlinkfont' to={`/events/${req.id}`}>{req.title}</NavLink>
                             <button className='delbutt' onClick={async (e) => {
                                 await dispatch(deleteReqsThunk(req.id, user))
                                 await setStatus(!status)
