@@ -36,6 +36,7 @@ export default function MyEvents() {
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <ul className="ulformine">
+                    <h1 className="myeventsh1">My Events</h1>
                     {arr.map(event => {
                         return (
 

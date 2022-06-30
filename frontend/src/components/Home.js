@@ -7,6 +7,7 @@ import './home.css'
 export default function HomePage() {
     const dispatch = useDispatch()
     const [status, updateStatus] = useState(true);
+    const [page, setPage] = useState(0)
 
     const userr = useSelector(state => { return state.session.user })
     let user;
@@ -15,12 +16,23 @@ export default function HomePage() {
     const events = useSelector(state => {
         return state.events
     })
-    const array = events.list
+    // const array = events.list
+    let array;
+    if (events.list) {
+        array = events.list.slice(page * 5, (page + 1) * 5)
+    }
+
+    // console.log(events.list.slice(0, 5))
+    if (events.list) {
+
+        console.log(events.list.length / 5)
+        console.log(page)
+    }
 
     useEffect(() => {
 
         dispatch(getEventsThunk())
-    }, [dispatch, status])
+    }, [dispatch, status, page])
 
 
 
@@ -30,6 +42,16 @@ export default function HomePage() {
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <h1 className="h1heheh">Team Ups</h1>
+                <button className='backandforth' onClick={() => {
+                    if (page > 0) {
+                        setPage(page - 1)
+                    }
+                }}>Previous Page</button>
+                <button className='backandforth' onClick={() => {
+                    if (page + 1 < events.list.length / 5) {
+                        setPage(page + 1)
+                    }
+                }}>Next Page</button>
                 <ul className="culprit">
                     {array.map(event => {
                         return (
