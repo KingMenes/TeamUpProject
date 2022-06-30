@@ -12,6 +12,7 @@ export default function () {
     const [image, setImage] = useState()
     const [errors, setErrors] = useState([])
     const [file, setFile] = useState(null)
+    const [err, setErr] = useState('onlyiferrors')
 
     const history = useHistory()
     const username = useSelector(state => state.session.user)
@@ -47,9 +48,11 @@ export default function () {
             }
 
             setErrors(err)
+            if (errors.length > 0) {
+                setErr('onlyiferrors')
+            } else setErr('')
 
-
-        }, [title, description, date, image, file])
+        }, [title, description, date, image, file, errors])
 
         const onSubmit = async (e) => {
             e.preventDefault()
@@ -69,14 +72,13 @@ export default function () {
         const updateFile = (e) => {
             const file = e.target.files[0];
             if (file) setFile(file);
-            console.log(file.name)
         };
 
         return (
             <div className="createcontain">
                 <h1 className="titleforcreate">Create a Team Up event</h1>
-                {errors && <ul className="ulcreateform">
-                    {errors.map(error => {
+                {errors && <ul className={`ulcreateform ${err}`}>
+                    {errors && errors.map(error => {
                         return (
                             <li key={error} className='errors'>{error}</li>
                         )
