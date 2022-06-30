@@ -55,11 +55,11 @@ body {
 }
 
 button {
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 label {
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: black;
 }
 
@@ -84,7 +84,7 @@ label {
     border-radius: 3px;
     padding: 3px;
     font-weight: bold;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .backandforth {
@@ -124,7 +124,7 @@ label {
     padding: 5px;
     text-decoration: none;
     width: fit-content;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
     background-color: whitesmoke;
 

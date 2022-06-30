@@ -30,9 +30,8 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>User Info
-                <i className="fas fa-user-circle" />
-            </button>
+            <img onClick={openMenu} id='navpic' src='https://brensteamupsproject.s3.amazonaws.com/nav.png'></img>
+
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li className="eachli"><a className='links' href='https://www.linkedin.com/in/brendan-lau-b6952919a/'>LinkedIn</a></li>

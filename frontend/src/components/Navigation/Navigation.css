@@ -22,7 +22,7 @@ body {
 }
 
 .links {
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: black;
     border: solid 1px black;
     text-decoration: none;
@@ -99,8 +99,14 @@ body {
     border-top: none;
 }
 
+#navpic {
+    height: 25px;
+    width: 25px;
+    border-radius: 25px;
+}
+
 .lisession {
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: black;
     background-color: whitesmoke;
     text-decoration: none;
