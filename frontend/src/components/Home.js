@@ -22,12 +22,7 @@ export default function HomePage() {
         array = events.list.slice(page * 5, (page + 1) * 5)
     }
 
-    // console.log(events.list.slice(0, 5))
-    if (events.list) {
 
-        console.log(events.list.length / 5)
-        console.log(page)
-    }
 
     useEffect(() => {
 
