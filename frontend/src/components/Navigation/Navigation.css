@@ -81,3 +81,9 @@ body {
     background-color: antiquewhite;
 
 }
+
+.home {
+    height: 30px;
+    width: 30px;
+    /* background-color: antiquewhite; */
+}

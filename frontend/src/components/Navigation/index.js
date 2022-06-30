@@ -34,9 +34,9 @@ function Navigation({ isLoaded }) {
     return (
         <ul className='navul'>
             <li className='nav'>
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink exact to='/'><img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img></NavLink>
             </li>
-            <NavLink exact to='/'><img className='logo' src="https://i.ibb.co/Mg591GM/wordart.jpg" alt='TeamUps'></img></NavLink>
+            <NavLink exact to="/"><img className='home' src='https://brensteamupsproject.s3.amazonaws.com/home.png'></img></NavLink>
             {isLoaded && sessionLinks}
         </ul>
     );
