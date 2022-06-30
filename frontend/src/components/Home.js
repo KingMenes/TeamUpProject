@@ -42,16 +42,19 @@ export default function HomePage() {
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <h1 className="h1heheh">Team Ups</h1>
-                <button className='backandforth' onClick={() => {
-                    if (page > 0) {
-                        setPage(page - 1)
-                    }
-                }}>Previous Page</button>
-                <button className='backandforth' onClick={() => {
-                    if (page + 1 < events.list.length / 5) {
-                        setPage(page + 1)
-                    }
-                }}>Next Page</button>
+                <div className="backforthdiv">
+
+                    <button className='backandforth' onClick={() => {
+                        if (page > 0) {
+                            setPage(page - 1)
+                        }
+                    }}>←</button>
+                    <button className='backandforth' onClick={() => {
+                        if (page + 1 < events.list.length / 5) {
+                            setPage(page + 1)
+                        }
+                    }}>→</button>
+                </div>
                 <ul className="culprit">
                     {array.map(event => {
                         return (
@@ -73,6 +76,7 @@ export default function HomePage() {
 
                         )
                     })}
+                    <div id='page'>Page: {page + 1}</div>
                 </ul>
             </>
         )
