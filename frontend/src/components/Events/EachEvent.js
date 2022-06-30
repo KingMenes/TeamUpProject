@@ -26,7 +26,7 @@ export default function () {
     const rsvps = useSelector(state => {
         return state.requests.rsvps
     })
-    console.log(rsvps)
+    // console.log(rsvps)
 
     useEffect(() => {
         dispatch(getAllThunk(eventId))
