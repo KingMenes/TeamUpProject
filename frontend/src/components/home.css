@@ -48,6 +48,21 @@ body {
 
 }
 
+#searchbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.filter {
+    background-color: blanchedalmond;
+    border: solid 2px black;
+    padding: 4px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px black;
+}
+
 #page {
     background-color: ivory;
     border: solid black 1px;
@@ -86,7 +101,8 @@ body {
     margin: 5px;
     background-color: gainsboro;
     position: relative;
-
+    top: 25px;
+    left: 20px;
     border: 1px solid black;
     border-radius: 3px;
     padding: 5px;

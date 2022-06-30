@@ -8,12 +8,17 @@ body {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    margin: 0;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
     padding: 0;
     position: absolute;
     top: 0px;
     height: fit-content;
     align-items: center;
+    border-bottom: solid 1px black;
+    box-shadow: 0px 0px 20px black;
+    margin-bottom: 40px;
 }
 
 

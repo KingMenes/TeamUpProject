@@ -8,6 +8,7 @@ export default function HomePage() {
     const dispatch = useDispatch()
     const [status, updateStatus] = useState(true);
     const [page, setPage] = useState(0)
+    const [string, setString] = useState('')
 
     const userr = useSelector(state => { return state.session.user })
     let user;
@@ -16,10 +17,20 @@ export default function HomePage() {
     const events = useSelector(state => {
         return state.events
     })
-    // const array = events.list
-    let array;
+
+    let tempArr
+
     if (events.list) {
-        array = events.list.slice(page * 5, (page + 1) * 5)
+        const temp = events.list.slice()
+        tempArr = temp.filter(event => {
+            return event.title.toLowerCase().includes(string) || event.User.username.toLowerCase().includes(string)
+        })
+    }
+
+
+    let array;
+    if (tempArr) {
+        array = tempArr.slice(page * 5, (page + 1) * 5)
     }
 
 
@@ -37,6 +48,9 @@ export default function HomePage() {
             <>
                 <NavLink className='createform' to='/events/new'>Create Request</NavLink>
                 <h1 className="h1heheh">Team Ups</h1>
+                <div id='searchbar'>
+                    <label className="filter">Filter<input onChange={(e) => { setString(e.target.value) }}></input></label>
+                </div>
                 <div className="backforthdiv">
 
                     <button className='backandforth' onClick={() => {
