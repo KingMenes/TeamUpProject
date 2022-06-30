@@ -63,7 +63,7 @@ export default function () {
                     {event.image && <img className='images' src={event.image}></img>}
 
                     <UpdateForm event={event} />
-                    {rsvps.length > 0 && <ul className="listofrsvps">
+                    {rsvps && <ul className="listofrsvps">
                         <h2 className='rsvptitle' >RSVP List</h2>
                         {rsvps.map(rsvp => {
                             return (
