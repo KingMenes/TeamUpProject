@@ -48,11 +48,8 @@ export default function () {
             }
 
             setErrors(err)
-            if (errors.length > 0) {
-                setErr('onlyiferrors')
-            } else setErr('')
 
-        }, [title, description, date, image, file, errors])
+        }, [title, description, date, image, file])
 
         const onSubmit = async (e) => {
             e.preventDefault()
@@ -77,13 +74,13 @@ export default function () {
         return (
             <div className="createcontain">
                 <h1 className="titleforcreate">Create a Team Up event</h1>
-                {errors && <ul className={`ulcreateform ${err}`}>
+                {errors.length ? <ul className={`ulcreateform ${err}`}>
                     {errors && errors.map(error => {
                         return (
                             <li key={error} className='errors'>{error}</li>
                         )
                     })}
-                </ul>}
+                </ul> : null}
                 <form className='formcreate' onSubmit={onSubmit}>
                     <button className='backbutton' onClick={() => { history.goBack() }}>Back</button>
                     <label className='labelforforms'>
@@ -100,11 +97,13 @@ export default function () {
                         Event Date
                         <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
+                    <div id='inserter'>
 
-                    <label className="labelforforms">
-                        Insert Image
-                        <input className='inputsuff' type='file' onChange={updateFile} />
-                    </label>
+                        <label className="insertimage">
+                            Insert Image
+                            <input className='inputsuff' type='file' onChange={updateFile} />
+                        </label>
+                    </div>
 
                     <button disabled={errors.length ? true : false}>Submit</button>
                 </form>

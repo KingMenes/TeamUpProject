@@ -40,14 +40,14 @@ export default function () {
             <>
                 <div className="eacheventdiv">
                     <div className="buttondiv">
-                        <button className='bunchabuttons' onClick={() => { history.goBack() }}>Back</button>
+                        <button className='bunchabuttons delbutt' onClick={() => { history.goBack() }}>Back</button>
                         {
-                            user === event.userId && <button className='bunchabuttons' onClick={async (e) => {
+                            user === event.userId && <button className='bunchabuttons delbutt' onClick={async (e) => {
                                 await dispatch(deleteEventsThunk(event.id))
                                 await history.push('/')
                             }}>Delete</button>
                         }
-                        {user && user !== event.userId && <button className='bunchabuttons' onClick={async () => {
+                        {user && user !== event.userId && <button className='bunchabuttons delbutt' onClick={async () => {
                             const request = await dispatch(getReqsThunk(eventId, user))
                             if (!request) {
                                 await dispatch(postReqsThunk({ userId: user, eventId: event.id }))

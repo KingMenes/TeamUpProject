@@ -23,7 +23,7 @@ export default function HomePage() {
     if (events.list) {
         const temp = events.list.slice()
         tempArr = temp.filter(event => {
-            return event.title.toLowerCase().includes(string) || event.User.username.toLowerCase().includes(string)
+            return event.title.toLowerCase().includes(string.toLowerCase()) || event.User.username.toLowerCase().includes(string.toLowerCase())
         })
     }
 
@@ -69,7 +69,7 @@ export default function HomePage() {
                         return (
                             <NavLink key={event.id} className='navLink' to={`/events/${event.id}`}>
                                 <li className="EachEvent">
-                                    {user === event.userId && <button className='delb' onClick={async (e) => {
+                                    {user === event.userId && <button className='delb delbutt' onClick={async (e) => {
                                         e.stopPropagation()
                                         e.preventDefault()
                                         await dispatch(deleteEventsThunk(event.id))

@@ -43,7 +43,7 @@ export default function MyEvents() {
                             <NavLink className='navLink' key={event.id} to={`/events/${event.id}`}>
 
                                 <li className="EachEvent">
-                                    {user === event.userId && <button onClick={async (e) => {
+                                    {user === event.userId && <button className='delb delbutt' onClick={async (e) => {
                                         e.preventDefault()
                                         await dispatch(deleteEventsThunk(event.id))
                                         await updateStatus(!status)

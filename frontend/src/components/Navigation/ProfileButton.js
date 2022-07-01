@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
                     <li className="eachli"><a className='links' href='https://www.linkedin.com/in/brendan-lau-b6952919a/'>LinkedIn</a></li>
                     <li className="eachli"><a className='links' href='https://github.com/BrenLau'>GitHub</a></li>
                     <li>
-                        <button onClick={logout}>Log Out</button>
+                        <button id='logbutton' onClick={logout}>Log Out</button>
                     </li>
                 </ul>
             )}

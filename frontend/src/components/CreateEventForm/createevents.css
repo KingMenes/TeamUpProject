@@ -18,8 +18,31 @@
     padding: 0px;
 }
 
+#inserter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* border: solid 1px; */
+}
+
+
 .onlyiferrors {
     border: 1px solid black;
+}
+
+.insertimage {
+    border: solid 1px;
+    width: fit-content;
+    background-color: azure;
+    margin: 8px;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.insertimage:hover {
+    transform: scale(1.1);
+
+    background-color: aqua;
 }
 
 .backbutton {

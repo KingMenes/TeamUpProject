@@ -75,26 +75,27 @@ export default function ({ event }) {
         const updateFile = (e) => {
             const file = e.target.files[0];
             if (file) setFile(file);
-            console.log(file.name)
         };
 
         return (
             <div className="createcontain">
-                {event.userId === username.id && <button onClick={() => {
+                {event.userId === username.id && <button className='editbutt' onClick={() => {
                     if (hidden === 'hidden') {
                         setHidden('none')
                     } else {
                         setHidden('hidden')
                     }
                 }}>Edit</button>}
-                <h2 className={hidden}>Edit</h2>
-                {errors && <ul className={`ulcreateform ${hidden}`}>
-                    {errors.map(error => {
-                        return (
-                            <li key={error} className='errors'>{error}</li>
-                        )
-                    })}
-                </ul>}
+                <h2 className={`${hidden} editform`}>Edit Event</h2>
+                {
+                    errors && <ul className={`ulcreateform ${hidden}`}>
+                        {errors.map(error => {
+                            return (
+                                <li key={error} className='errors'>{error}</li>
+                            )
+                        })}
+                    </ul>
+                }
                 <form className={`formcreate ${hidden}`} onSubmit={onSubmit}>
                     <label className='labelforforms'>
                         Title
@@ -110,16 +111,18 @@ export default function ({ event }) {
                         Event Date
                         <input className="inputstuff" type='date' onChange={(e) => { setDate(e.target.value) }}></input>
                     </label>
+                    <div id='inserter'>
 
-                    <label className="labelforforms">
-                        Insert Image
-                        <input className='inputstuff' type='file' onChange={updateFile} />
-                    </label>
+                        <label className="insertimage">
+                            Insert Image
+                            <input className='inputsuff' type='file' onChange={updateFile} />
+                        </label>
+                    </div>
 
-                    <button disabled={errors.length ? true : false}>Submit</button>
+                    <button className='editbutt' disabled={errors.length ? true : false}>Submit</button>
                 </form>
 
-            </div>
+            </div >
         )
     }
 }
