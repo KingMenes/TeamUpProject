@@ -4,13 +4,14 @@
     width: 100%;
     /* display: flex; */
 
-
 }
 
 
+
 body {
-    width: 100%;
+    width: 80%;
     margin: 0;
     /* position: static; */
     background: url(../../wordart.jpeg);
+    height: 100%;
 }

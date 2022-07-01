@@ -7,9 +7,9 @@ footer {
     height: 50px;
     min-height: fit-content;
     justify-content: center;
-    position: sticky;
-    bottom: 0px;
-    /* top: 100%; */
+    position: absolute;
+    /* bottom: 0px; */
+    top: 100%;
     text-transform: uppercase;
     width: 100%;
     z-index: 1;
