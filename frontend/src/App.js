@@ -10,6 +10,7 @@ import EachEvent from "./components/Events/EachEvent";
 import CreateForm from "./components/CreateEventForm/CreateForm";
 import MyRequests from "./components/MyRequests/MyRequests";
 import MyEvents from "./components/Events/MyEvents";
+import Footer from "./components/footer/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,9 +48,9 @@ function App() {
           </Route>
 
 
-
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

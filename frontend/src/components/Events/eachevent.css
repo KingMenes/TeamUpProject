@@ -147,3 +147,24 @@
     padding: 9px;
     border: black solid 2px;
 }
+
+.descid {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    height: fit-content;
+    margin: 2px;
+    word-break: break-all;
+}
+
+.h1each {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    height: fit-content;
+    margin: 2px;
+    word-break: break-all;
+
+}

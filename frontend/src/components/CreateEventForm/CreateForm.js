@@ -105,7 +105,7 @@ export default function () {
                         </label>
                     </div>
 
-                    <button disabled={errors.length ? true : false}>Submit</button>
+                    <button className='delbutt more' disabled={errors.length ? true : false}>Submit</button>
                 </form>
 
             </div>

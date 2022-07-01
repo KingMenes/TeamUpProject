@@ -57,9 +57,9 @@ export default function () {
                         }
                         }>Team up request</button>}
                     </div>
-                    <h1>{event && event.title}</h1>
+                    <h1 className="h1each">{event && event.title}</h1>
                     <p>Event Date: {event.date}</p>
-                    <p>{event && event.description}</p>
+                    <div className='descid'>{event && event.description}</div>
                     {event.image && <img className='images' src={event.image}></img>}
 
                     <UpdateForm event={event} />
