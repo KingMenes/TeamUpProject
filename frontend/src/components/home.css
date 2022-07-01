@@ -9,7 +9,7 @@
     /* margin-right: 40px; */
     min-width: fit-content;
     /* width: 80%; */
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 h1 {
@@ -21,8 +21,9 @@ body {
     /* margin-top: 10px; */
     padding-top: 35px;
     width: 100%;
-    padding-bottom: 50px;
-    height: 93vh;
+    /* padding-bottom: 50px; */
+    height: 100vh;
+    margin-bottom: 50px;
 }
 
 .culprit {
@@ -45,6 +46,7 @@ body {
 .EachEvent:hover {
     box-shadow: 0px 0px 8px darkslategray;
     background-color: azure;
+
 }
 
 .createbutton {
@@ -58,11 +60,11 @@ body {
 }
 
 button {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 label {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
     color: black;
 }
 
@@ -87,7 +89,7 @@ label {
     border-radius: 3px;
     padding: 3px;
     font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 textarea {
@@ -214,7 +216,7 @@ textarea {
     color: black;
     text-decoration: none;
     font-size: 18px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .delb {

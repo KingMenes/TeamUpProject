@@ -24,8 +24,8 @@
 }
 
 .images {
-    max-height: 80%;
-    max-width: 80%;
+    max-height: 500px;
+    max-width: 500px;
     border: solid black 2px;
     border-radius: 5px;
 }
@@ -154,8 +154,9 @@
     width: 80%;
     flex-wrap: wrap;
     height: fit-content;
-    margin: 2px;
+    margin: 8px;
     word-break: break-all;
+    justify-content: center;
 }
 
 .h1each {
@@ -166,5 +167,6 @@
     height: fit-content;
     margin: 2px;
     word-break: break-all;
+    justify-content: center;
 
 }

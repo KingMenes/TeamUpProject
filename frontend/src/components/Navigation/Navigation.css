@@ -92,14 +92,7 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    /* font-family: 'Times New Roman', Times, serif;
-    color: black;
-    border: solid 1px black;
-    text-decoration: none;
-    border-radius: 3px;
-    background-color: whitesmoke;
-    padding: 2px;
-    margin: 2px; */
+
 }
 
 .logo {
@@ -188,7 +181,7 @@ body {
 }
 
 .lisession {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Courier New', Courier, monospace;
     color: black;
     background-color: whitesmoke;
     text-decoration: none;
