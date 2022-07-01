@@ -55,12 +55,12 @@ function LoginFormPage() {
                         required
                     />
                 </label>
-                <button type="submit">Log In</button>
+                <button type="submit" className='delbutt more'>Log In</button>
                 <button onClick={(e) => {
                     e.preventDefault()
                     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
-                }} className='demo'>Demo</button>
-                <NavLink to='/signup'>Don't have an account? Click here</NavLink>
+                }} className='demo delbutt more'>Demo</button>
+                <NavLink className='delbutt more' to='/signup'>Don't have an account? Click here</NavLink>
             </form>
         </div>
     );

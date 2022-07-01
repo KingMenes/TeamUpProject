@@ -73,8 +73,8 @@ function SignupFormPage() {
                         required
                     />
                 </label>
-                <button type="submit">Sign Up</button>
-                <NavLink to='/login'>Already have an account? Sign in here</NavLink>
+                <button type="submit" className="delbutt more">Sign Up</button>
+                <NavLink className="delbutt more" to='/login'>Already have an account? Sign in here</NavLink>
             </form>
         </div>
     );

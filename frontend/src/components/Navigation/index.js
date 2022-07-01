@@ -21,10 +21,10 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <div className='sessionlinks'>
                 <li>
-                    <NavLink className='lisession' to="/login">Log In</NavLink>
+                    <NavLink className='lisession delbutt' to="/login">Log In</NavLink>
                 </li>
                 <li>
-                    <NavLink className='lisession' to="/signup">Sign Up</NavLink>
+                    <NavLink className='lisession delbutt' to="/signup">Sign Up</NavLink>
                 </li>
             </div>
         );

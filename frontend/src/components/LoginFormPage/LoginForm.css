@@ -24,6 +24,10 @@
     flex-direction: column;
 }
 
+.more {
+    margin: 10px;
+}
+
 button {
     width: fit-content;
     /* justify-self: center; */
