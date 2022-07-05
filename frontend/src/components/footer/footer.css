@@ -7,7 +7,7 @@ footer {
     height: 50px;
     min-height: fit-content;
     justify-content: center;
-    position: absolute;
+    position: static;
     /* bottom: 0px; */
     top: 100%;
     text-transform: uppercase;
